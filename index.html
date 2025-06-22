@@ -24,7 +24,7 @@
       padding: 1rem 2rem;
       text-align: center;
     }
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
       margin-top: 0;
       margin-bottom: 0.5rem;
       font-weight: 600;
@@ -178,6 +178,7 @@
       cursor: pointer;
       user-select: none;
       transition: background-color 0.3s ease, color 0.3s ease;
+      z-index: 1000;
     }
     #lang-switcher:hover, #lang-switcher:focus {
       background: #0ea5e9;
@@ -193,6 +194,38 @@
       text-align: center;
       font-weight: 700;
       color: #0ea5e9;
+      user-select: text;
+    }
+    /* Обзоры */
+    .game-reviews {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+      padding: 1.5rem;
+      margin-bottom: 3rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      user-select: text;
+    }
+    .game-review {
+      margin-bottom: 2rem;
+    }
+    .game-review h4 {
+      color: #0284c7;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      user-select: text;
+    }
+    .game-review p {
+      margin-bottom: 1rem;
+      color: #475569;
+      line-height: 1.5;
+      user-select: text;
+      white-space: pre-line;
+    }
+    .game-review strong {
+      font-weight: 700;
       user-select: text;
     }
   </style>
@@ -220,6 +253,10 @@
         <!-- Категории слотов подгружаются сюда скриптом -->
       </div>
     </section>
+    <section class="game-reviews section" aria-label="Подробные обзоры игр с геймплейными советами">
+      <h2 id="detailed-reviews-title">Подробные обзоры игр с геймплейными советами</h2>
+      <div id="game-reviews-container"></div>
+    </section>
     <section class="reviews section" aria-label="Отзывы игроков">
       <h2 id="reviews-title">Отзывы игроков</h2>
       <div id="reviews-container" class="reviews-list" role="list"></div>
@@ -228,8 +265,6 @@
   <footer>
     <p id="footer-text">© 2025 1win Обзор. Все права защищены.</p>
   </footer>
-
-  <script type="application/ld+json" id="jsonld-slots"></script>
 
   <script>
     AOS.init({
@@ -240,7 +275,7 @@
 
     const langSwitcher = document.getElementById('lang-switcher');
 
-    // Данные слотов с темами (категориями)
+    // Данные слотов с категориями
     const slotsData = [
       {
         id: 'luckyjet',
@@ -379,35 +414,23 @@
         },
         en: {
           title: 'Book of Ra',
-          desc: 'A classic Egyptian-themed slot that has long won the hearts of players worldwide.'
+          desc: 'Classic Egyptian-themed slot that has won players hearts worldwide.'
         }
       }
     ];
 
-    // Категории с названиями и id
+    // Категории слотов
     const slotCategories = [
       { id: 'jackpot', ru: 'Джекпоты', en: 'Jackpots' },
-      { id: 'classic', ru: 'Классика', en: 'Classics' },
+      { id: 'classic', ru: 'Классика', en: 'Classic' },
       { id: 'new', ru: 'Новые', en: 'New' },
       { id: 'bonus', ru: 'С бонусами', en: 'With Bonuses' }
     ];
 
+    // Отзывы игроков
     const reviewsData = [
       {
         id: 'user1',
-        avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
-        ru: {
-          name: 'Алексей П.',
-          text: 'Отличное казино с быстрыми выплатами и честной игрой! Очень доволен бонусами и поддержкой.'
-        },
-        en: {
-          name: 'Alex P.',
-          text: 'Great casino with fast payouts and fair play! Really happy with bonuses and support.'
-        },
-        rating: 5
-      },
-      {
-        id: 'user2',
         avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
         ru: {
           name: 'Марина К.',
@@ -434,6 +457,7 @@
       }
     ];
 
+    // Тексты сайта
     const texts = {
       ru: {
         siteTitle: "1win Казино — Обзор и Топ-10 Слотов",
@@ -452,7 +476,8 @@
           "Удобный мобильный интерфейс и приложение.",
           "Поддержка 24/7 на русском языке."
         ],
-        reviewsTitle: "Отзывы игроков"
+        reviewsTitle: "Отзывы игроков",
+        detailedReviewsTitle: "Подробные обзоры игр с геймплейными советами"
       },
       en: {
         siteTitle: "1win Casino — Review & Top 10 Slots",
@@ -471,11 +496,136 @@
           "Convenient mobile interface and app.",
           "24/7 support in English."
         ],
-        reviewsTitle: "Player Reviews"
+        reviewsTitle: "Player Reviews",
+        detailedReviewsTitle: "Detailed Game Reviews with Gameplay Tips"
       }
     };
 
-    // Отрисовка преимуществ
+    // Обзоры игр по слотам
+    const gameReviewsData = {
+      luckyjet: {
+        ru: {
+          strategy: `- Рекомендуется делать небольшие ставки, чтобы максимально использовать высокую волатильность.\n- Играйте постепенно, не рискуйте всем банкроллом сразу.\n- Активно используйте бонусные раунды для увеличения шансов на выигрыш.`,
+          features: `- Высокая волатильность.\n- Яркие бонусные функции.\n- Простой интерфейс с понятными правилами.`,
+          tips: `- Используйте бонусы казино для увеличения банка.\n- Следите за балансом и устанавливайте лимиты на ставки.\n- Не пытайтесь "догонять" проигрыши, играйте ответственно.`
+        },
+        en: {
+          strategy: `- It's recommended to place small bets to take full advantage of high volatility.\n- Play gradually without risking the entire bankroll at once.\n- Actively use bonus rounds to increase winning chances.`,
+          features: `- High volatility.\n- Bright bonus features.\n- Simple interface with clear rules.`,
+          tips: `- Use casino bonuses to increase your bankroll.\n- Monitor your balance and set betting limits.\n- Avoid chasing losses; play responsibly.`
+        }
+      },
+      sweetbonanza: {
+        ru: {
+          strategy: `- Используйте ставки среднего размера для баланса между риском и наградой.\n- Обратите внимание на активацию бонусных функций.\n- Играйте с умом, выбирая время для увеличения ставок.`,
+          features: `- Фруктовая тематика.\n- Множество бонусных функций.\n- Высокие выплаты при активации бонусов.`,
+          tips: `- Активируйте бесплатные вращения через бонусные предложения.\n- Следите за игровым балансом и не превышайте лимиты.\n- Используйте стратегию "мартингейл" с осторожностью.`
+        },
+        en: {
+          strategy: `- Use medium bets for balance between risk and reward.\n- Pay attention to bonus feature activation.\n- Play wisely, choosing moments to increase bets.`,
+          features: `- Fruit theme.\n- Many bonus features.\n- High payouts when bonuses activate.`,
+          tips: `- Activate free spins through bonus offers.\n- Monitor your balance and don't exceed limits.\n- Use the "martingale" strategy with caution.`
+        }
+      },
+      gatesofolympus: {
+        ru: {
+          strategy: `- Ставьте умеренные суммы, чтобы дольше оставаться в игре.\n- Следите за множителями в бонусных раундах.\n- Используйте автоспин с ограничениями по проигрышу.`,
+          features: `- Мифологическая тематика.\n- Множители в бонусных раундах.\n- Частые бонусы.`,
+          tips: `- Используйте бонусы казино для дополнительных возможностей.\n- Не увеличивайте ставки после проигрыша.\n- Устанавливайте лимиты по времени игры.`
+        },
+        en: {
+          strategy: `- Place moderate bets to stay longer in the game.\n- Watch multipliers in bonus rounds.\n- Use autoplay with loss limits.`,
+          features: `- Mythological theme.\n- Multipliers in bonus rounds.\n- Frequent bonuses.`,
+          tips: `- Use casino bonuses for extra chances.\n- Don't increase bets after losses.\n- Set time limits for your play sessions.`
+        }
+      },
+      aztecmagic: {
+        ru: {
+          strategy: `- Делайте ставки небольшого размера для частого выигрыша.\n- Воспользуйтесь функцией бесплатных вращений.\n- Играйте в спокойном темпе, чтобы управлять банкроллом.`,
+          features: `- Тематика древних цивилизаций.\n- Функция бесплатных вращений.\n- Множители.`,
+          tips: `- Используйте бонусы для активации фриспинов.\n- Ставьте лимиты по времени и ставкам.\n- Не гонитесь за большими выигрышами, играйте стабильно.`
+        },
+        en: {
+          strategy: `- Place small bets for frequent wins.\n- Take advantage of free spins feature.\n- Play at a steady pace to manage bankroll.`,
+          features: `- Ancient civilizations theme.\n- Free spins feature.\n- Multipliers.`,
+          tips: `- Use bonuses to activate free spins.\n- Set time and betting limits.\n- Don't chase big wins; play steadily.`
+        }
+      },
+      bookofdead: {
+        ru: {
+          strategy: `- Рекомендуется играть с умеренными ставками.\n- Активно используйте функцию расширяющейся книги.\n- Контролируйте банкролл и не увлекайтесь.`,
+          features: `- Приключенческая тематика.\n- Функция расширяющейся книги.\n- Высокая волатильность.`,
+          tips: `- Используйте бонусы для увеличения шансов.\n- Устанавливайте лимиты ставок.\n- Не пытайтесь отыграться после проигрышей.`
+        },
+        en: {
+          strategy: `- Recommended to play with moderate bets.\n- Actively use expanding book feature.\n- Manage bankroll and avoid overplaying.`,
+          features: `- Adventure theme.\n- Expanding book feature.\n- High volatility.`,
+          tips: `- Use bonuses to improve chances.\n- Set betting limits.\n- Avoid chasing losses.`
+        }
+      },
+      reactoonz: {
+        ru: {
+          strategy: `- Играйте на средней или высокой ставке для увеличения выигрышей.\n- Используйте каскадные выигрыши для цепочек побед.\n- Ставьте лимиты и контролируйте время игры.`,
+          features: `- Динамичный игровой процесс.\n- Механика каскадных выигрышей.\n- Уникальные персонажи.`,
+          tips: `- Следите за банкроллом.\n- Используйте бонусы казино.\n- Делайте паузы для контроля эмоций.`
+        },
+        en: {
+          strategy: `- Play at medium or high bets to increase wins.\n- Use cascading wins for streaks.\n- Set limits and control play time.`,
+          features: `- Dynamic gameplay.\n- Cascading wins mechanics.\n- Unique characters.`,
+          tips: `- Monitor bankroll.\n- Use casino bonuses.\n- Take breaks to control emotions.`
+        }
+      },
+      fruitparty: {
+        ru: {
+          strategy: `- Ставьте небольшие или средние ставки.\n- Активируйте бонусные функции для максимальных выплат.\n- Играйте с ограничениями по времени и ставкам.`,
+          features: `- Фруктовая тематика.\n- Множество бонусных функций.\n- Высокое количество выигрышных комбинаций.`,
+          tips: `- Используйте бонусы для бесплатных вращений.\n- Устанавливайте лимиты по ставкам.\n- Играйте ответственно, не торопитесь.`
+        },
+        en: {
+          strategy: `- Place small or medium bets.\n- Activate bonus features for max payouts.\n- Play with time and betting limits.`,
+          features: `- Fruit theme.\n- Many bonus features.\n- High number of winning combos.`,
+          tips: `- Use bonuses for free spins.\n- Set betting limits.\n- Play responsibly and patiently.`
+        }
+      },
+      jamminjars: {
+        ru: {
+          strategy: `- Используйте ставки среднего размера.\n- Воспользуйтесь прогрессивным множителем для максимизации выигрышей.\n- Контролируйте время и банкролл.`,
+          features: `- Механика кластерных выплат.\n- Прогрессивный множитель.\n- Яркая графика и музыка.`,
+          tips: `- Активно используйте бонусы.\n- Устанавливайте лимиты на игру.\n- Не гонитесь за крупными выигрышами.`
+        },
+        en: {
+          strategy: `- Use medium bets.\n- Take advantage of progressive multiplier to maximize wins.\n- Control time and bankroll.`,
+          features: `- Cluster pays mechanics.\n- Progressive multiplier.\n- Bright graphics and music.`,
+          tips: `- Actively use bonuses.\n- Set play limits.\n- Avoid chasing big wins.`
+        }
+      },
+      megamoolah: {
+        ru: {
+          strategy: `- Играйте с небольшими ставками для долгой игры.\n- Следите за прогрессивным джекпотом.\n- Не увеличивайте ставки после проигрышей.`,
+          features: `- Прогрессивный джекпот.\n- Высокая волатильность.\n- Множество бонусных раундов.`,
+          tips: `- Используйте бонусы казино.\n- Устанавливайте лимиты по времени.\n- Играйте ответственно.`
+        },
+        en: {
+          strategy: `- Play with small bets for longer gameplay.\n- Watch the progressive jackpot.\n- Don't increase bets after losses.`,
+          features: `- Progressive jackpot.\n- High volatility.\n- Many bonus rounds.`,
+          tips: `- Use casino bonuses.\n- Set time limits.\n- Play responsibly.`
+        }
+      },
+      bookofra: {
+        ru: {
+          strategy: `- Ставьте средние ставки для баланса риска и вознаграждения.\n- Используйте функцию бесплатных вращений.\n- Контролируйте банкролл и время игры.`,
+          features: `- Египетская тематика.\n- Бесплатные вращения.\n- Классический геймплей.`,
+          tips: `- Активируйте бонусы для увеличения шансов.\n- Следите за лимитами ставок.\n- Не играйте на эмоциях.`
+        },
+        en: {
+          strategy: `- Place medium bets for risk-reward balance.\n- Use free spins feature.\n- Manage bankroll and play time.`,
+          features: `- Egyptian theme.\n- Free spins.\n- Classic gameplay.`,
+          tips: `- Activate bonuses to improve chances.\n- Monitor betting limits.\n- Avoid emotional play.`
+        }
+      }
+    };
+
+    // Функция отрисовки преимуществ
     function renderAdvantages(lang) {
       const advantagesList = document.getElementById('advantages-list');
       advantagesList.innerHTML = '';
@@ -486,32 +636,27 @@
       });
     }
 
-    // Отрисовка слотов по категориям
+    // Функция отрисовки слотов по категориям
     function renderSlotsByCategories(lang) {
       const container = document.getElementById('categories-container');
       container.innerHTML = '';
 
       slotCategories.forEach(category => {
-        // Фильтрация слотов по категории
         const filteredSlots = slotsData.filter(slot => slot.categories.includes(category.id));
         if (filteredSlots.length === 0) return;
 
-        // Создаём контейнер категории
         const categoryDiv = document.createElement('section');
         categoryDiv.className = 'slot-category';
         categoryDiv.setAttribute('aria-label', `${category[lang]} слоты`);
 
-        // Заголовок категории
         const categoryTitle = document.createElement('h3');
         categoryTitle.textContent = category[lang];
         categoryDiv.appendChild(categoryTitle);
 
-        // Контейнер карточек слотов
         const cardList = document.createElement('div');
         cardList.className = 'card-list';
         cardList.setAttribute('role', 'list');
 
-        // Карточки слотов
         filteredSlots.forEach(slot => {
           const card = document.createElement('article');
           card.className = 'card';
@@ -536,7 +681,7 @@
       });
     }
 
-    // Отрисовка отзывов
+    // Функция отрисовки отзывов
     function renderReviews(lang) {
       const container = document.getElementById('reviews-container');
       container.innerHTML = '';
@@ -546,7 +691,6 @@
         card.setAttribute('role', 'listitem');
         card.setAttribute('tabindex', '0');
 
-        // Рейтинг звёзд
         const stars = Array.from({length: 5}).map((_, i) => {
           if (i < review.rating) {
             return `<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21z"/></svg>`;
@@ -567,40 +711,71 @@
       });
     }
 
-    // Обновление основных текстов страницы
-    function updateTextContent(lang) {
-      document.title = texts[lang].siteTitle;
-      document.getElementById('header-title').textContent = texts[lang].headerTitle;
-      document.getElementById('hero-title').textContent = texts[lang].heroTitle;
-      document.getElementById('hero-description').textContent = texts[lang].heroDescription;
-      document.getElementById('hero-button').textContent = texts[lang].heroButton;
-      document.getElementById('slots-title').textContent = texts[lang].slotsTitle;
-      document.getElementById('footer-text').textContent = texts[lang].footerText;
-      document.getElementById('advantages-title').textContent = texts[lang].advantagesTitle;
-      document.getElementById('reviews-title').textContent = texts[lang].reviewsTitle;
+    // Функция отрисовки подробных обзоров игр
+    function renderGameReviews(lang) {
+      const container = document.getElementById('game-reviews-container');
+      container.innerHTML = '';
+
+      Object.keys(gameReviewsData).forEach(slotId => {
+        const slot = slotsData.find(s => s.id === slotId);
+        if (!slot) return;
+
+        const review = gameReviewsData[slotId][lang];
+        if (!review) return;
+
+        const reviewDiv = document.createElement('article');
+        reviewDiv.className = 'game-review';
+        reviewDiv.setAttribute('tabindex', '0');
+        reviewDiv.setAttribute('aria-label', `${slot[lang].title} - обзор и советы`);
+
+        reviewDiv.innerHTML = `
+          <h4>${slot[lang].title}</h4>
+          <p><strong>${lang === 'ru' ? 'Стратегия:' : 'Strategy:'}</strong><br>${review.strategy.replace(/\n/g, '<br>')}</p>
+          <p><strong>${lang === 'ru' ? 'Особенности:' : 'Features:'}</strong><br>${review.features.replace(/\n/g, '<br>')}</p>
+          <p><strong>${lang === 'ru' ? 'Советы:' : 'Tips:'}</strong><br>${review.tips.replace(/\n/g, '<br>')}</p>
+        `;
+        container.appendChild(reviewDiv);
+      });
     }
 
-    // Переключение языка
-    function switchLang() {
-      const currentLang = langSwitcher.getAttribute('data-lang') || 'ru';
+    // Основная функция переключения языка
+    function switchLanguage() {
+      const currentLang = document.documentElement.lang;
       const newLang = currentLang === 'ru' ? 'en' : 'ru';
+      document.documentElement.lang = newLang;
+
+      // Текстовые элементы
+      document.title = texts[newLang].siteTitle;
+      document.getElementById('header-title').textContent = texts[newLang].headerTitle;
+      document.getElementById('hero-title').textContent = texts[newLang].heroTitle;
+      document.getElementById('hero-description').textContent = texts[newLang].heroDescription;
+      document.getElementById('hero-button').textContent = texts[newLang].heroButton;
+      document.getElementById('slots-title').textContent = texts[newLang].slotsTitle;
+      document.getElementById('footer-text').textContent = texts[newLang].footerText;
+      document.getElementById('advantages-title').textContent = texts[newLang].advantagesTitle;
+      document.getElementById('reviews-title').textContent = texts[newLang].reviewsTitle;
+      document.getElementById('detailed-reviews-title').textContent = texts[newLang].detailedReviewsTitle;
+
+      // Кнопка переключения языка
       langSwitcher.textContent = newLang.toUpperCase();
-      langSwitcher.setAttribute('data-lang', newLang);
-      updateTextContent(newLang);
+
       renderAdvantages(newLang);
       renderSlotsByCategories(newLang);
       renderReviews(newLang);
+      renderGameReviews(newLang);
     }
 
-    // Инициализация на русском по умолчанию
-    langSwitcher.setAttribute('data-lang', 'ru');
-    updateTextContent('ru');
+    // Инициализация страницы с русским языком по умолчанию
+    document.documentElement.lang = 'ru';
+    langSwitcher.textContent = 'EN';
+
     renderAdvantages('ru');
     renderSlotsByCategories('ru');
     renderReviews('ru');
+    renderGameReviews('ru');
 
-    langSwitcher.addEventListener('click', switchLang);
-
+    // Обработчик кнопки переключения языка
+    langSwitcher.addEventListener('click', switchLanguage);
   </script>
 </body>
 </html>
