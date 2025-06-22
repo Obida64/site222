@@ -253,6 +253,102 @@
         font-size: 1.4rem;
       }
     }
+
+    /* Отзывы */
+
+    .reviews {
+      max-width: 1200px;
+      margin: 60px auto 0;
+      padding: 0 20px;
+      color: #e0e7ff;
+    }
+
+    .reviews h2 {
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #0ea5e9;
+      display: inline-block;
+      padding-bottom: 6px;
+      font-weight: 700;
+      color: #38bdf8;
+      user-select: none;
+    }
+
+    .reviews-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .review-card {
+      background: #1e293b;
+      border-radius: 20px;
+      padding: 25px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      user-select: text;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(14, 165, 233, 0.7);
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .review-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 16px;
+      user-select: none;
+      pointer-events: none;
+      box-shadow: 0 0 8px rgba(14, 165, 233, 0.5);
+    }
+
+    .review-name {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #38bdf8;
+      user-select: text;
+    }
+
+    .review-rating {
+      margin-left: auto;
+      display: flex;
+      gap: 3px;
+    }
+
+    .review-rating svg {
+      width: 20px;
+      height: 20px;
+      fill: #0ea5e9;
+      stroke: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .review-rating svg[fill="none"] path {
+      stroke: #0ea5e9;
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .review-text {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: #94a3b8;
+      user-select: text;
+      white-space: pre-line;
+    }
+
   </style>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </head>
@@ -270,6 +366,10 @@
     <section class="advantages" aria-label="Преимущества игры в 1win">
       <h3 id="advantages-title">Преимущества игры в 1win</h3>
       <ul id="advantages-list"></ul>
+    </section>
+    <section class="reviews section" aria-label="Отзывы игроков">
+      <h2 id="reviews-title">Отзывы игроков</h2>
+      <div id="reviews-container" class="reviews-list" role="list"></div>
     </section>
     <section aria-label="Топ-10 популярных слотов" class="section">
       <h2 id="slots-title">🌟 Топ-10 популярных слотов</h2>
@@ -424,6 +524,48 @@
       }
     ];
 
+    const reviewsData = [
+      {
+        id: 'user1',
+        avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
+        ru: {
+          name: 'Алексей П.',
+          text: 'Отличное казино с быстрыми выплатами и честной игрой! Очень доволен бонусами и поддержкой.'
+        },
+        en: {
+          name: 'Alex P.',
+          text: 'Great casino with fast payouts and fair play! Really happy with bonuses and support.'
+        },
+        rating: 5
+      },
+      {
+        id: 'user2',
+        avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
+        ru: {
+          name: 'Марина С.',
+          text: 'Интерфейс удобный, много слотов, всегда можно найти что-то интересное. Кэшбэк — приятный бонус.'
+        },
+        en: {
+          name: 'Marina S.',
+          text: 'User-friendly interface, many slots, always something interesting to play. Cashback is a nice bonus.'
+        },
+        rating: 4
+      },
+      {
+        id: 'user3',
+        avatar: 'https://randomuser.me/api/portraits/men/79.jpg',
+        ru: {
+          name: 'Дмитрий К.',
+          text: 'Играл в несколько слотов, очень понравилась графика и бонусные раунды. Рекомендую!'
+        },
+        en: {
+          name: 'Dmitry K.',
+          text: 'Played several slots, really liked the graphics and bonus rounds. Recommended!'
+        },
+        rating: 5
+      }
+    ];
+
     const texts = {
       ru: {
         siteTitle: "1win Казино — Обзор и Топ-10 Слотов",
@@ -433,47 +575,45 @@
         heroButton: "Играть на 1win",
         slotsTitle: "🌟 Топ-10 популярных слотов",
         footerText: "© 2025 1win Обзор. Все права защищены.",
-        playBtn: "Играть",
         advantagesTitle: "Преимущества игры в 1win",
         advantagesList: [
-          "Бонус до 500% на первый депозит — отличный старт для новых игроков.",
-          "Быстрые и безопасные выплаты без задержек.",
-          "Более 9000 игр от лучших провайдеров: слоты, рулетка, покер и ставки.",
-          "Еженедельный кэшбэк до 10% для постоянных клиентов.",
-          "Удобный интерфейс и мобильная версия для игры на ходу.",
-          "Профессиональная поддержка 24/7 на русском и английском."
-        ]
+          "До 500% бонуса на первый депозит.",
+          "Еженедельный кэшбэк до 15%.",
+          "Мгновенные выплаты без задержек.",
+          "Более 9000 игр от ведущих провайдеров.",
+          "Удобный мобильный интерфейс и приложение.",
+          "Поддержка 24/7 на русском языке."
+        ],
+        reviewsTitle: "Отзывы игроков"
       },
       en: {
         siteTitle: "1win Casino — Review & Top 10 Slots",
-        headerTitle: "🔥 1win Casino Review — Your Winning Starts Here",
-        heroTitle: "1win — The Top Online Casino of 2025",
-        heroDescription: "1win offers up to 500% welcome bonus, weekly cashback, instant payouts, and 9000+ games from top providers.",
+        headerTitle: "🔥 1win Casino Review — The Game Starts Here",
+        heroTitle: "1win — Leading Online Casino 2025",
+        heroDescription: "1win offers up to 500% first deposit bonus, weekly cashback, instant payouts, and over 9000 games from top providers.",
         heroButton: "Play on 1win",
         slotsTitle: "🌟 Top 10 Popular Slots",
         footerText: "© 2025 1win Review. All rights reserved.",
-        playBtn: "Play",
         advantagesTitle: "Advantages of Playing at 1win",
         advantagesList: [
-          "Up to 500% welcome bonus — great start for new players.",
-          "Fast and secure payouts with no delays.",
-          "Over 9000 games from top providers: slots, roulette, poker, and bets.",
-          "Weekly cashback up to 10% for loyal customers.",
-          "Convenient interface and mobile version for gaming on the go.",
-          "Professional 24/7 support in Russian and English."
-        ]
+          "Up to 500% first deposit bonus.",
+          "Weekly cashback up to 15%.",
+          "Instant payouts without delays.",
+          "Over 9000 games from leading providers.",
+          "Convenient mobile interface and app.",
+          "24/7 support in English."
+        ],
+        reviewsTitle: "Player Reviews"
       }
     };
 
     function renderAdvantages(lang) {
-      const advTitle = document.getElementById('advantages-title');
-      const advList = document.getElementById('advantages-list');
-      advTitle.textContent = texts[lang].advantagesTitle;
-      advList.innerHTML = '';
+      const advantagesList = document.getElementById('advantages-list');
+      advantagesList.innerHTML = '';
       texts[lang].advantagesList.forEach(item => {
         const li = document.createElement('li');
         li.textContent = item;
-        advList.appendChild(li);
+        advantagesList.appendChild(li);
       });
     }
 
@@ -481,77 +621,87 @@
       const container = document.getElementById('slots-container');
       container.innerHTML = '';
       slotsData.forEach(slot => {
-        const card = document.createElement('div');
+        const card = document.createElement('article');
         card.className = 'card';
-        card.setAttribute('data-aos', 'fade-up');
         card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `${slot[lang].title}: ${slot[lang].desc}`);
+
         card.innerHTML = `
-          <img src="${slot.img}" alt="${slot[lang].title}" loading="lazy" />
+          <a href="${slot.link}" target="_blank" rel="nofollow noopener noreferrer" tabindex="-1" aria-hidden="true">
+            <img src="${slot.img}" alt="${slot[lang].title} — изображение слота" loading="lazy" />
+          </a>
           <h3>${slot[lang].title}</h3>
           <p>${slot[lang].desc}</p>
-          <a class="btn" href="${slot.link}" target="_blank" rel="nofollow noopener noreferrer">${texts[lang].playBtn}</a>
+          <a href="${slot.link}" target="_blank" rel="nofollow noopener noreferrer" class="btn" aria-label="${lang === 'ru' ? 'Играть в ' : 'Play '} ${slot[lang].title}">${lang === 'ru' ? 'Играть' : 'Play'}</a>
         `;
         container.appendChild(card);
       });
-      AOS.refresh();
     }
 
-    function switchLanguage(lang) {
-      document.documentElement.lang = lang;
+    function renderReviews(lang) {
+      const container = document.getElementById('reviews-container');
+      container.innerHTML = '';
+      reviewsData.forEach(review => {
+        const card = document.createElement('article');
+        card.className = 'review-card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0');
+
+        // Рейтинг звёзд
+        const stars = Array.from({length: 5}).map((_, i) => {
+          if (i < review.rating) {
+            return `<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21z"/></svg>`;
+          } else {
+            return `<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path stroke="#0ea5e9" stroke-width="1.5" d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.63 12 2 9.19 8.63 2 9.24 7.46 13.97 5.82 21z"/></svg>`;
+          }
+        }).join('');
+
+        card.innerHTML = `
+          <div class="review-header">
+            <img src="${review.avatar}" alt="${review[lang].name}" class="review-avatar" loading="lazy" />
+            <div class="review-name">${review[lang].name}</div>
+            <div class="review-rating" aria-label="${review.rating} из 5 звезд">${stars}</div>
+          </div>
+          <p class="review-text">${review[lang].text}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function updateTextContent(lang) {
       document.title = texts[lang].siteTitle;
-      document.getElementById('header-title').innerText = texts[lang].headerTitle;
-      document.getElementById('hero-title').innerText = texts[lang].heroTitle;
-      document.getElementById('hero-description').innerText = texts[lang].heroDescription;
-      document.getElementById('hero-button').innerText = texts[lang].heroButton;
-      document.getElementById('hero-button').href = "https://1wcqwj.life";
-      document.getElementById('slots-title').innerText = texts[lang].slotsTitle;
-      document.getElementById('footer-text').innerText = texts[lang].footerText;
-      langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
-
-      renderAdvantages(lang);
-      renderSlots(lang);
-
-      // Обновляем JSON-LD под язык
-      const jsonldScript = document.getElementById('jsonld-slots');
-      const graph = slotsData.map(slot => ({
-        "@type": "VideoGame",
-        "name": slot[lang].title,
-        "image": slot.img,
-        "url": slot.link,
-        "offers": {
-          "@type": "Offer",
-          "url": slot.link,
-          "availability": "https://schema.org/InStock"
-        },
-        "description": slot[lang].desc,
-        "publisher": {
-          "@type": "Organization",
-          "name": "1win"
-        }
-      }));
-      jsonldScript.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": graph
-      }, null, 2);
-
-      AOS.refresh();
+      document.getElementById('site-title').textContent = texts[lang].siteTitle;
+      document.getElementById('header-title').textContent = texts[lang].headerTitle;
+      document.getElementById('hero-title').textContent = texts[lang].heroTitle;
+      document.getElementById('hero-description').textContent = texts[lang].heroDescription;
+      document.getElementById('hero-button').textContent = texts[lang].heroButton;
+      document.getElementById('slots-title').textContent = texts[lang].slotsTitle;
+      document.getElementById('footer-text').textContent = texts[lang].footerText;
+      document.getElementById('advantages-title').textContent = texts[lang].advantagesTitle;
+      document.getElementById('reviews-title').textContent = texts[lang].reviewsTitle;
     }
 
-    langSwitcher.addEventListener('click', () => {
-      const currentLang = document.documentElement.lang;
+    function switchLang() {
+      const currentLang = langSwitcher.getAttribute('data-lang') || 'ru';
       const newLang = currentLang === 'ru' ? 'en' : 'ru';
-      switchLanguage(newLang);
-    });
+      langSwitcher.textContent = newLang.toUpperCase();
+      langSwitcher.setAttribute('data-lang', newLang);
+      updateTextContent(newLang);
+      renderAdvantages(newLang);
+      renderSlots(newLang);
+      renderReviews(newLang);
+    }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const userLang = navigator.language || navigator.userLanguage || 'en';
-      const isCIS = ['ru', 'uk', 'be', 'kk', 'uz', 'ky', 'tg', 'hy'].some(code => userLang.toLowerCase().startsWith(code));
-      if (!isCIS) {
-        switchLanguage('en');
-      } else {
-        switchLanguage('ru');
-      }
-    });
+    // Инициализация на русском по умолчанию
+    langSwitcher.setAttribute('data-lang', 'ru');
+    updateTextContent('ru');
+    renderAdvantages('ru');
+    renderSlots('ru');
+    renderReviews('ru');
+
+    langSwitcher.addEventListener('click', switchLang);
+
   </script>
 </body>
 </html>
