@@ -173,7 +173,7 @@
       document.getElementById('modal').style.display = 'block';
       document.getElementById('modalForm').style.display = 'block';
       document.getElementById('successMessage').style.display = 'none';
-      document.getElementById('modalForm').reset();
+      document.getElementById('modalFormElem').reset();
     }
 
     // Закрытие модального окна
@@ -185,9 +185,17 @@
     function submitForm(event) {
       event.preventDefault();
 
-      // Здесь можно добавить валидацию или отправку на сервер через fetch/ajax
+      // Можно добавить валидацию, например:
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if (!name || !phone) {
+        alert('Пожалуйста, заполните имя и телефон.');
+        return;
+      }
 
-      // Просто показываем сообщение об успехе
+      // Здесь можно добавить отправку данных на сервер (fetch/ajax)
+      // Для примера просто показываем сообщение об успехе:
+
       document.getElementById('modalForm').style.display = 'none';
       document.getElementById('successMessage').style.display = 'block';
     }
@@ -213,7 +221,7 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacts">Контакты</a></li>
       </ul>
-      <div class="hamburger" onclick="toggleMenu()">
+      <div class="hamburger" onclick="toggleMenu()" aria-label="Меню" role="button" tabindex="0">
         <div></div>
         <div></div>
         <div></div>
@@ -309,4 +317,29 @@
     <p>&copy; 2025 Завод Металлопроката. Все права защищены.</p>
   </footer>
 
- 
+  <!-- Модальное окно -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-content">
+      <button class="btn-close" aria-label="Закрыть окно" onclick="closeModal()">&times;</button>
+      <h3 id="modalTitle">Запросить прайс-лист и консультацию</h3>
+      <form id="modalFormElem" onsubmit="submitForm(event)" autocomplete="off" aria-describedby="modalDesc">
+        <div id="modalForm">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" required placeholder="Введите имя" />
+
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__" pattern="[\+7][0-9\s\-\(\)]{10,}" />
+
+          <label for="comment">Комментарий (необязательно)</label>
+          <textarea id="comment" name="comment" placeholder="Ваши вопросы или пожелания"></textarea>
+
+          <button type="submit" class="btn-submit">Отправить</button>
+        </div>
+      </form>
+      <div id="successMessage" class="modal-success" style="display:none;">
+        Спасибо! Ваш запрос отправлен.<br />Мы свяжемся с вами в ближайшее время.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
