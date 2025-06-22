@@ -15,26 +15,141 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <style>
-    body { margin: 0; font-family: 'Rubik', sans-serif; background: #0f172a; color: #cbd5e1; }
-    header { background: linear-gradient(90deg, #0ea5e9, #2563eb); padding: 30px 20px; text-align: center; color: #fff; position: relative; }
-    header h1 { margin: 0; font-size: 2rem; }
-    #lang-switcher { position: absolute; top: 20px; right: 20px; background: #1e40af; color: #fff; border: none; padding: 6px 12px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; }
-    main { max-width: 1200px; margin: auto; padding: 40px 20px; }
-    .hero { background: url('https://images.unsplash.com/photo-1591054332822-4bb7810eb32c?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover; padding: 60px 30px; border-radius: 20px; text-align: center; box-shadow: 0 0 40px rgba(14, 165, 233, 0.4); }
-    .hero h2 { color: white; font-size: 2.5rem; margin-bottom: 10px; }
-    .hero p { font-size: 1.2rem; margin-bottom: 30px; }
-    .btn { display: inline-block; background: linear-gradient(90deg, #06b6d4, #3b82f6); color: white; padding: 10px 16px; font-size: 0.85rem; border: none; border-radius: 12px; text-decoration: none; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4); max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
-    .btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5); }
-    .section { margin-top: 60px; }
-    .section h2 { font-size: 2rem; margin-bottom: 30px; border-bottom: 2px solid #0ea5e9; display: inline-block; }
-    .card-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .card { background: #1e293b; border-radius: 16px; padding: 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.3); transition: transform 0.3s ease; }
-    .card:hover { transform: translateY(-6px); }
-    .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 15px; }
-    .card h3 { margin-top: 0; font-size: 1.4rem; color: #22d3ee; }
-    .card p { font-size: 0.95rem; color: #94a3b8; margin-bottom: 16px; }
-    footer { text-align: center; padding: 30px; font-size: 0.9rem; color: #64748b; }
-    @media (max-width: 600px) { .hero h2 { font-size: 1.8rem; } .hero p { font-size: 1rem; } .btn { display: block; width: 100%; font-size: 0.9rem; padding: 12px; margin-top: 10px; } }
+    body {
+      margin: 0;
+      font-family: 'Rubik', sans-serif;
+      background: #0f172a;
+      color: #cbd5e1;
+    }
+    header {
+      background: linear-gradient(90deg, #0ea5e9, #2563eb);
+      padding: 30px 20px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    #lang-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #1e40af;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1591054332822-4bb7810eb32c?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      padding: 60px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(14, 165, 233, 0.4);
+    }
+    .hero h2 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      color: white;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    }
+    .section {
+      margin-top: 60px;
+    }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #0ea5e9;
+      display: inline-block;
+    }
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: #22d3ee;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        font-size: 0.9rem;
+        padding: 12px;
+        margin-top: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -53,22 +168,22 @@
     <h2>🌟 Популярные слоты</h2>
     <div class="card-list">
       <div class="card" data-aos="fade-up">
-        <img src="https://cdn.1win.life/slot-luckyjet.webp" alt="Lucky Jet">
+        <img src="https://cdn.1win.life/slot-luckyjet.webp" alt="Lucky Jet" />
         <h3>Lucky Jet</h3>
         <p>Одна из самых популярных игр в стиле crash, где ваша задача — вовремя нажать «Забрать». Чем дольше держите ставку, тем выше множитель, но можно всё потерять. Захватывающий риск и шанс на огромный выигрыш.</p>
-        <a class="btn" href="https://1wcqwj.life/slots/lucky-jet" target="_blank">Играть</a>
+        <a class="btn" href="https://1wcqwj.life/slots/lucky-jet" target="_blank" rel="nofollow noopener noreferrer">Играть</a>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://cdn.1win.life/slot-sweetbonanza.webp" alt="Sweet Bonanza">
+        <img src="https://cdn.1win.life/slot-sweetbonanza.webp" alt="Sweet Bonanza" />
         <h3>Sweet Bonanza</h3>
         <p>Яркий фруктовый слот от Pragmatic Play с каскадными выплатами, возможностью купить бонус-игру и RTP около 96.5%. Отличный выбор для любителей сладких побед.</p>
-        <a class="btn" href="https://1wcqwj.life/slots/sweet-bonanza" target="_blank">Играть</a>
+        <a class="btn" href="https://1wcqwj.life/slots/sweet-bonanza" target="_blank" rel="nofollow noopener noreferrer">Играть</a>
       </div>
       <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://cdn.1win.life/slot-gatesofolympus.webp" alt="Gates of Olympus">
+        <img src="https://cdn.1win.life/slot-gatesofolympus.webp" alt="Gates of Olympus" />
         <h3>Gates of Olympus</h3>
         <p>Мифологический слот, где Зевс может в любой момент бросить молнию и добавить мощные множители. Один из самых эпичных слотов с высокой волатильностью и зрелищными бонусами.</p>
-        <a class="btn" href="https://1wcqwj.life/slots/gates-of-olympus" target="_blank">Играть</a>
+        <a class="btn" href="https://1wcqwj.life/slots/gates-of-olympus" target="_blank" rel="nofollow noopener noreferrer">Играть</a>
       </div>
     </div>
   </section>
@@ -76,9 +191,11 @@
 <footer data-aos="fade-up">
   <p id="footer-text">© 2025 1win Обзор. Все права защищены.</p>
 </footer>
+
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init({ once: true });
+
   const langSwitcher = document.getElementById('lang-switcher');
   const elements = {
     ru: {
@@ -98,6 +215,7 @@
       footer: "© 2025 1win Review. All rights reserved."
     }
   };
+
   function switchLanguage(lang) {
     document.documentElement.lang = lang;
     document.title = elements[lang].title;
@@ -108,16 +226,19 @@
     document.getElementById('footer-text').innerText = elements[lang].footer;
     langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
   }
+
   langSwitcher.addEventListener('click', () => {
     const currentLang = document.documentElement.lang;
     const newLang = currentLang === 'ru' ? 'en' : 'ru';
     switchLanguage(newLang);
   });
+
   window.addEventListener('DOMContentLoaded', () => {
     const userLang = navigator.language || navigator.userLanguage;
     const isCIS = ['ru', 'uk', 'be', 'kk', 'uz', 'ky', 'tg', 'hy'].some(code => userLang.startsWith(code));
     if (!isCIS) switchLanguage('en');
   });
 </script>
+
 </body>
 </html>
