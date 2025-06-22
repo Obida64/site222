@@ -1,89 +1,215 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Обзор 1win: Казино и Топ‑3 слота</title>
-<style>
-body{margin:0;font-family:sans-serif;background:#f5f7fa;color:#333;}
-header{background:#4f46e5;color:#fff;text-align:center;padding:20px;font-size:24px;font-weight:700;}
-main{max-width:1000px;margin:20px auto;padding:0 15px;}
-h2{color:#1e293b;border-bottom:3px solid #4f46e5;display:inline-block;padding-bottom:5px;}
-.card{background:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1);margin:20px 0;cursor:pointer;overflow:hidden;transition:transform .3s;}
-.card:hover{transform:translateY(-5px);}
-.header{display:flex;justify-content:space-between;align-items:center;padding:15px;}
-.header h3{margin:0;font-size:20px;color:#1e293b;}
-.header .toggle{font-size:18px;color:#4f46e5;transition:transform .3s;}
-.card.active .toggle{transform:rotate(90deg);}
-.details{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s;}
-.card.active .details{padding:15px;max-height:600px;}
-.details img{max-width:100%;border-radius:8px;margin:10px 0;}
-.btn{display:inline-block;background:#4f46e5;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;margin:5px 5px 0 0;box-shadow:0 4px 12px rgba(79,70,229,0.3);}
-.btn:hover{text-decoration:none;background:#3730a3;}
-@media(max-width:600px){header{font-size:20px;} .header h3{font-size:18px;} .btn{width:100%;text-align:center;}}
-</style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1win Казино — Обзор и Популярные Слоты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --main-color: #0ea5e9;
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-light: #cbd5e1;
+      --accent: #22d3ee;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Rubik', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-light);
+    }
+
+    header {
+      background: linear-gradient(90deg, #0ea5e9, #2563eb);
+      padding: 30px 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1591054332822-4bb7810eb32c?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+      padding: 60px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(14, 165, 233, 0.4);
+    }
+
+    .hero h2 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      color: white;
+      padding: 14px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    }
+
+    .section {
+      margin-top: 60px;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--main-color);
+      display: inline-block;
+    }
+
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>1win: Обзор Казино и Популярных Слотов</header>
+
+<header>
+  <h1>🔥 Обзор Казино 1win — Игра начинается здесь</h1>
+</header>
+
 <main>
+  <section class="hero">
+    <h2>1win — Лидер онлайн-казино 2025</h2>
+    <p>Бонус до 500%, мгновенные выплаты, более 9000 игр и топовые слоты от мировых провайдеров.</p>
+    <a class="btn" href="https://1wcqwj.life" target="_blank" rel="nofollow noopener noreferrer">Играть на 1win</a>
+  </section>
 
-<section><h2>Обзор казино <em>1win</em></h2>
-<div class="card">
-  <div class="header">
-    <h3>1win Casino</h3><div class="toggle">▶</div>
-  </div>
-  <div class="details">
-    <p>1win работает с 2016 года под лицензией Кюрасао, предлагает свыше 9 000 игр от NetEnt, Microgaming, Pragmatic Play и др. :contentReference[oaicite:22]{index=22}</p>
-    <img src="https://via.placeholder.com/800x400?text=1win+Casino+Interface" alt="Интерфейс 1win">
-    <ul>
-      <li><strong>Бонус:</strong> до 500 % на первые депозиты + 250 фриспинов :contentReference[oaicite:23]{index=23}</li>
-      <li><strong>Кэшбэк:</strong> до 30 % еженедельно :contentReference[oaicite:24]{index=24}</li>
-      <li><strong>Вывод средств:</strong> мгновенно (5–20 мин), множество методов :contentReference[oaicite:25]{index=25}</li>
-      <li><strong>Мобильность:</strong> браузер и apps для Android/iOS, работает даже при слабом интернете :contentReference[oaicite:26]{index=26}</li>
-      <li><strong>Безопасность:</strong> SSL, 2FA, лицензия, поддержка 24/7 :contentReference[oaicite:27]{index=27}</li>
-    </ul>
-    <a href="https://1wcqwj.life" class="btn" target="_blank" rel="nofollow noopener noreferrer">Перейти на сайт 1win</a>
-  </div>
-</div></section>
+  <section class="section">
+    <h2>🎯 Преимущества 1win</h2>
+    <div class="card-list">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1620172163931-4fc40ffbed21?auto=format&fit=crop&w=800&q=80" alt="1win бонусы">
+        <h3>Щедрые бонусы</h3>
+        <p>До 500% на первый депозит + 250 фриспинов. Кэшбэк до 30% каждую неделю.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1611056551731-44d7e588e8ee?auto=format&fit=crop&w=800&q=80" alt="Игры и провайдеры">
+        <h3>9000+ игр</h3>
+        <p>Топовые провайдеры: NetEnt, Pragmatic Play, Microgaming, Nolimit City, Push Gaming и др.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80" alt="Мобильное приложение 1win">
+        <h3>Мобильное казино</h3>
+        <p>Удобные приложения и веб-версия для Android/iOS. Играйте в любое время и в любом месте.</p>
+      </div>
+    </div>
+  </section>
 
-<section><h2>Топ‑3 слота с 1win</h2>
-
-<div class="card">
-  <div class="header"><h3>Lucky Jet (краш‑игра)</h3><div class="toggle">▶</div></div>
-  <div class="details">
-    <p>Инновационный слот-краш: ставка растёт с коэффициентом, ты нажимаешь «Забрать» сам. Популярен за то, что можно сорвать крупный множитель :contentReference[oaicite:28]{index=28}</p>
-    <img src="https://via.placeholder.com/800x400?text=Lucky+Jet" alt="Lucky Jet">
-    <a href="https://1wcqwj.life/slots/lucky-jet" class="btn" target="_blank">Играть в Lucky Jet</a>
-  </div>
-</div>
-
-<div class="card">
-  <div class="header"><h3>Sweet Bonanza</h3><div class="toggle">▶</div></div>
-  <div class="details">
-    <p>RTP до 98 %, каскадные выигрыши, система множителей и бесплатных вращений — один из самых щедрых слотов на платформе :contentReference[oaicite:29]{index=29}</p>
-    <img src="https://via.placeholder.com/800x400?text=Sweet+Bonanza" alt="Sweet Bonanza">
-    <a href="https://1wcqwj.life/slots/sweet-bonanza" class="btn" target="_blank">Играть в Sweet Bonanza</a>
-  </div>
-</div>
-
-<div class="card">
-  <div class="header"><h3>Gates of Olympus</h3><div class="toggle">▶</div></div>
-  <div class="details">
-    <p>Богатая греческая мифология, RTP ~96.5 %, функция каскадов и множители от Зевса — один из самых захватывающих видео-слотов :contentReference[oaicite:30]{index=30}</p>
-    <img src="https://via.placeholder.com/800x400?text=Gates+of+Olympus" alt="Gates of Olympus">
-    <a href="https://1wcqwj.life/slots/gates-of-olympus" class="btn" target="_blank">Играть в Gates of Olympus</a>
-  </div>
-</div>
-
-</section>
+  <section class="section">
+    <h2>🎰 Популярные Слоты на 1win</h2>
+    <div class="card-list">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1610910717800-9c56b7696c06?auto=format&fit=crop&w=800&q=80" alt="Lucky Jet слот">
+        <h3>Lucky Jet</h3>
+        <p>Азартная краш-игра, где ты сам выбираешь момент остановки ставки. Высокие множители и эмоции!</p>
+        <a class="btn" href="https://1wcqwj.life/slots/lucky-jet" target="_blank">Играть</a>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1622440852237-9e24ce44c3d1?auto=format&fit=crop&w=800&q=80" alt="Sweet Bonanza слот">
+        <h3>Sweet Bonanza</h3>
+        <p>Слот с каскадными выигрышеами, вкусной графикой и RTP до 98%. Один из самых популярных слотов.</p>
+        <a class="btn" href="https://1wcqwj.life/slots/sweet-bonanza" target="_blank">Играть</a>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1607082349566-187361d53207?auto=format&fit=crop&w=800&q=80" alt="Gates of Olympus слот">
+        <h3>Gates of Olympus</h3>
+        <p>Мифологическая тематика, каскады, множители от Зевса. Один из хитов от Pragmatic Play.</p>
+        <a class="btn" href="https://1wcqwj.life/slots/gates-of-olympus" target="_blank">Играть</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<script>
-document.querySelectorAll('.card').forEach(c=>{
-  c.onclick = ()=>{
-    const active=document.querySelector('.card.active');
-    if(active && active!==c){ active.classList.remove('active'); }
-    c.classList.toggle('active');
-  };
-});
-</script>
+<footer>
+  © 2025 1win Обзор. Все права защищены.
+</footer>
+
 </body>
 </html>
