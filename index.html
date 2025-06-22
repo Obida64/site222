@@ -689,15 +689,6 @@ const emptyStarSVG = `
       });
       AOS.refresh();
     }
-function renderReviews(lang) {
-  const container = document.getElementById('reviews-container');
-  container.innerHTML = '';
-  reviewsData.forEach(review => {
-    const card = document.createElement('div');
-    card.className = 'review-card';
-    card.setAttribute('data-aos', 'fade-up');
-    card.setAttribute('role', 'listitem');
-
     // Рендерим звёзды (rating)
     let starsHTML = '';
     for (let i = 1; i <= 5; i++) {
