@@ -15,7 +15,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <style>
-    /* Общие стили */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -185,7 +184,6 @@
       line-height: 1.4;
       user-select: text;
     }
-    /* Блок преимуществ */
     .advantages {
       background: #1e293b;
       border-radius: 20px;
@@ -225,7 +223,6 @@
       flex-shrink: 0;
       user-select: none;
     }
-    /* Мобильные стили */
     @media (max-width: 600px) {
       .hero h2 {
         font-size: 2rem;
@@ -256,29 +253,12 @@
       }
     }
   </style>
-
-  <!-- JSON-LD SEO для сайта -->
-  <script type="application/ld+json" id="jsonld-site">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "1win Казино — Обзор и Топ-10 Слотов",
-    "url": "https://1wcqwj.life",
-    "description": "Обзор казино 1win с топ-10 популярных слотов, актуальными бонусами и преимуществами игры.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "1win Обзор"
-    }
-  }
-  </script>
-
-  <!-- Подключение AOS для анимаций -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </head>
 <body>
   <header>
     <h1 id="header-title">🔥 Обзор Казино 1win — Игра начинается здесь</h1>
-    <button id="lang-switcher" aria-label="Switch language">EN</button>
+    <button id="lang-switcher" aria-label="Переключить язык">EN</button>
   </header>
   <main>
     <section class="hero" aria-label="Главный баннер казино 1win">
@@ -286,264 +266,291 @@
       <p id="hero-description">1win предлагает до 500% бонуса на первый депозит, еженедельный кэшбэк, мгновенные выплаты и более 9000 игр от топовых провайдеров.</p>
       <a id="hero-button" href="https://1wcqwj.life" target="_blank" rel="nofollow noopener noreferrer" class="btn" role="button">Играть на 1win</a>
     </section>
-
     <section class="advantages" aria-label="Преимущества игры в 1win">
       <h3 id="advantages-title">Преимущества игры в 1win</h3>
-      <ul id="advantages-list">
-        <!-- Сюда динамически вставляются преимущества -->
-      </ul>
+      <ul id="advantages-list"></ul>
     </section>
-
     <section aria-label="Топ-10 популярных слотов" class="section">
       <h2 id="slots-title">🌟 Топ-10 популярных слотов</h2>
-      <div id="slots-container" class="card-list" role="list">
-        <!-- Слот карты вставляются сюда динамически -->
-      </div>
+      <div id="slots-container" class="card-list" role="list"></div>
     </section>
   </main>
   <footer>
     <p id="footer-text">© 2025 1win Обзор. Все права защищены.</p>
   </footer>
 
-  <!-- JSON-LD для слотов, обновляется динамически -->
   <script type="application/ld+json" id="jsonld-slots"></script>
 
-<script>
-  AOS.init({
-    once: true,
-    duration: 700,
-    easing: 'ease-in-out'
-  });
-
-  const langSwitcher = document.getElementById('lang-switcher');
-
-  const slotsData = [
-    {
-      id: 'luckyjet',
-      img: 'https://cdn.1win.life/slot-luckyjet.webp',
-      link: 'https://1wcqwj.life/slots/lucky-jet',
-      ru: {
-        title: 'Lucky Jet',
-        desc: 'Захватывающий слот с высокой волатильностью и зрелищными бонусами. Отлично подходит для любителей риска и адреналина.'
-      },
-      en: {
-        title: 'Lucky Jet',
-        desc: 'The most epic slots with high volatility and spectacular bonuses.'
-      }
-    },
-    {
-      id: 'aztecmagic',
-      img: 'https://cdn.1win.life/slot-aztecmagic.webp',
-      link: 'https://1wcqwj.life/slots/aztec-magic',
-      ru: {
-        title: 'Aztec Magic',
-        desc: 'Захватывающий слот с тематикой древних цивилизаций, множеством бонусов и свободными вращениями. Отлично подходит для любителей классики с современными функциями.'
-      },
-      en: {
-        title: 'Aztec Magic',
-        desc: 'An exciting slot themed on ancient civilizations, packed with bonuses and free spins. Perfect for fans of classic style with modern features.'
-      }
-    },
-    {
-      id: 'bookofdead',
-      img: 'https://cdn.1win.life/slot-bookofdead.webp',
-      link: 'https://1wcqwj.life/slots/book-of-dead',
-      ru: {
-        title: 'Book of Dead',
-        desc: 'Легендарный слот с приключениями и поисками сокровищ. Высокая волатильность и возможность больших выигрышей делают игру очень популярной.'
-      },
-      en: {
-        title: 'Book of Dead',
-        desc: 'The legendary slot featuring adventures and treasure hunts. High volatility and big win potential make it very popular.'
-      }
-    },
-    {
-      id: 'reactoonz',
-      img: 'https://cdn.1win.life/slot-reactoonz.webp',
-      link: 'https://1wcqwj.life/slots/reactoonz',
-      ru: {
-        title: 'Reactoonz',
-        desc: 'Яркий и динамичный слот с необычными персонажами и механикой каскадных выигрышей. Каждый спин приносит неожиданные возможности.'
-      },
-      en: {
-        title: 'Reactoonz',
-        desc: 'A bright and dynamic slot with quirky characters and cascading wins mechanics. Every spin offers unexpected chances.'
-      }
-    },
-    {
-      id: 'fruitparty',
-      img: 'https://cdn.1win.life/slot-fruitparty.webp',
-      link: 'https://1wcqwj.life/slots/fruit-party',
-      ru: {
-        title: 'Fruit Party',
-        desc: 'Весёлый фруктовый слот с большим количеством выигрышных комбинаций и бонусными функциями. Яркий дизайн и лёгкое управление.'
-      },
-      en: {
-        title: 'Fruit Party',
-        desc: 'A fun fruit-themed slot with many winning combinations and bonus features. Bright design and easy gameplay.'
-      }
-    },
-    {
-      id: 'jamminjars',
-      img: 'https://cdn.1win.life/slot-jamminjars.webp',
-      link: 'https://1wcqwj.life/slots/jammin-jars',
-      ru: {
-        title: 'Jammin’ Jars',
-        desc: 'Уникальный слот с механикой кластерных выплат и прогрессивным множителем. Очень увлекательный и красочный.'
-      },
-      en: {
-        title: 'Jammin’ Jars',
-        desc: 'A unique slot featuring cluster pays and a progressive multiplier. Very engaging and colorful.'
-      }
-    },
-    {
-      id: 'megamoolah',
-      img: 'https://cdn.1win.life/slot-megamoolah.webp',
-      link: 'https://1wcqwj.life/slots/mega-moolah',
-      ru: {
-        title: 'Mega Moolah',
-        desc: 'Знаменитый слот с джекпотом, который может изменить жизнь. Высокая волатильность и множество бонусных функций.'
-      },
-      en: {
-        title: 'Mega Moolah',
-        desc: 'The famous jackpot slot that can change your life. High volatility and many bonus features.'
-      }
-    }
-  ];
-
-  // Тексты для основных элементов
-  const texts = {
-    ru: {
-      siteTitle: "1win Казино — Обзор и Топ-10 Слотов",
-      headerTitle: "🔥 Обзор Казино 1win — Игра начинается здесь",
-      heroTitle: "1win — Лидер онлайн-казино 2025",
-      heroDescription: "1win предлагает до 500% бонуса на первый депозит, еженедельный кэшбэк, мгновенные выплаты и более 9000 игр от топовых провайдеров.",
-      heroButton: "Играть на 1win",
-      slotsTitle: "🌟 Топ-10 популярных слотов",
-      footerText: "© 2025 1win Обзор. Все права защищены.",
-      playBtn: "Играть",
-      advantagesTitle: "Преимущества игры в 1win",
-      advantagesList: [
-        "Бонус до 500% на первый депозит — отличный старт для новых игроков.",
-        "Быстрые и безопасные выплаты без задержек.",
-        "Более 9000 игр от лучших провайдеров: слоты, рулетка, покер и ставки.",
-        "Еженедельный кэшбэк до 10% для постоянных клиентов.",
-        "Удобный интерфейс и мобильная версия для игры на ходу.",
-        "Профессиональная поддержка 24/7 на русском и английском."
-      ]
-    },
-    en: {
-      siteTitle: "1win Casino — Review & Top 10 Slots",
-      headerTitle: "🔥 1win Casino Review — Your Winning Starts Here",
-      heroTitle: "1win — The Top Online Casino of 2025",
-      heroDescription: "1win offers up to 500% welcome bonus, weekly cashback, instant payouts, and 9000+ games from top providers.",
-      heroButton: "Play on 1win",
-      slotsTitle: "🌟 Top 10 Popular Slots",
-      footerText: "© 2025 1win Review. All rights reserved.",
-      playBtn: "Play",
-      advantagesTitle: "Advantages of Playing at 1win",
-      advantagesList: [
-        "Up to 500% welcome bonus — great start for new players.",
-        "Fast and secure payouts with no delays.",
-        "Over 9000 games from top providers: slots, roulette, poker, and bets.",
-        "Weekly cashback up to 10% for loyal customers.",
-        "Convenient interface and mobile version for gaming on the go.",
-        "Professional 24/7 support in Russian and English."
-      ]
-    }
-  };
-
-  // Рендер преимуществ
-  function renderAdvantages(lang) {
-    const advTitle = document.getElementById('advantages-title');
-    const advList = document.getElementById('advantages-list');
-    advTitle.textContent = texts[lang].advantagesTitle;
-    advList.innerHTML = '';
-    texts[lang].advantagesList.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      advList.appendChild(li);
+  <script>
+    AOS.init({
+      once: true,
+      duration: 700,
+      easing: 'ease-in-out'
     });
-  }
 
-  // Рендер слотов
-  function renderSlots(lang) {
-    const container = document.getElementById('slots-container');
-    container.innerHTML = '';
-    slotsData.forEach(slot => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.setAttribute('data-aos', 'fade-up');
-      card.setAttribute('role', 'listitem');
-      card.innerHTML = `
-        <img src="${slot.img}" alt="${slot[lang].title}" loading="lazy" />
-        <h3>${slot[lang].title}</h3>
-        <p>${slot[lang].desc}</p>
-        <a class="btn" href="${slot.link}" target="_blank" rel="nofollow noopener noreferrer">${texts[lang].playBtn}</a>
-      `;
-      container.appendChild(card);
-    });
-    AOS.refresh();
-  }
+    const langSwitcher = document.getElementById('lang-switcher');
 
-  // Переключение языка
-  function switchLanguage(lang) {
-    document.documentElement.lang = lang;
-    document.title = texts[lang].siteTitle;
-    document.getElementById('header-title').innerText = texts[lang].headerTitle;
-    document.getElementById('hero-title').innerText = texts[lang].heroTitle;
-    document.getElementById('hero-description').innerText = texts[lang].heroDescription;
-    document.getElementById('hero-button').innerText = texts[lang].heroButton;
-    document.getElementById('hero-button').href = "https://1wcqwj.life";
-    document.getElementById('slots-title').innerText = texts[lang].slotsTitle;
-    document.getElementById('footer-text').innerText = texts[lang].footerText;
-    langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
+    const slotsData = [
+      {
+        id: 'luckyjet',
+        img: 'https://cdn.1win.life/slot-luckyjet.webp',
+        link: 'https://1wcqwj.life/slots/lucky-jet',
+        ru: {
+          title: 'Lucky Jet',
+          desc: 'Захватывающий слот с высокой волатильностью и зрелищными бонусами. Отлично подходит для любителей риска и адреналина.'
+        },
+        en: {
+          title: 'Lucky Jet',
+          desc: 'An exciting slot with high volatility and spectacular bonuses. Perfect for thrill-seekers and adrenaline lovers.'
+        }
+      },
+      {
+        id: 'sweetbonanza',
+        img: 'https://cdn.1win.life/slot-sweetbonanza.webp',
+        link: 'https://1wcqwj.life/slots/sweet-bonanza',
+        ru: {
+          title: 'Sweet Bonanza',
+          desc: 'Яркий и вкусный слот с фруктовой тематикой, множество бонусных функций и высоких выплат.'
+        },
+        en: {
+          title: 'Sweet Bonanza',
+          desc: 'A bright and fruity slot with many bonus features and high payouts.'
+        }
+      },
+      {
+        id: 'gatesofolympus',
+        img: 'https://cdn.1win.life/slot-gatesofolympus.webp',
+        link: 'https://1wcqwj.life/slots/gates-of-olympus',
+        ru: {
+          title: 'Gates of Olympus',
+          desc: 'Мифологический слот с интересными функциями, множителями и частыми бонусными раундами.'
+        },
+        en: {
+          title: 'Gates of Olympus',
+          desc: 'A mythological slot with interesting features, multipliers, and frequent bonus rounds.'
+        }
+      },
+      {
+        id: 'aztecmagic',
+        img: 'https://cdn.1win.life/slot-aztecmagic.webp',
+        link: 'https://1wcqwj.life/slots/aztec-magic',
+        ru: {
+          title: 'Aztec Magic',
+          desc: 'Захватывающий слот с тематикой древних цивилизаций, множеством бонусов и свободными вращениями.'
+        },
+        en: {
+          title: 'Aztec Magic',
+          desc: 'An exciting slot themed on ancient civilizations, packed with bonuses and free spins.'
+        }
+      },
+      {
+        id: 'bookofdead',
+        img: 'https://cdn.1win.life/slot-bookofdead.webp',
+        link: 'https://1wcqwj.life/slots/book-of-dead',
+        ru: {
+          title: 'Book of Dead',
+          desc: 'Легендарный слот с приключениями и поисками сокровищ. Высокая волатильность и возможность больших выигрышей.'
+        },
+        en: {
+          title: 'Book of Dead',
+          desc: 'The legendary slot featuring adventures and treasure hunts. High volatility and big win potential.'
+        }
+      },
+      {
+        id: 'reactoonz',
+        img: 'https://cdn.1win.life/slot-reactoonz.webp',
+        link: 'https://1wcqwj.life/slots/reactoonz',
+        ru: {
+          title: 'Reactoonz',
+          desc: 'Яркий и динамичный слот с необычными персонажами и механикой каскадных выигрышей.'
+        },
+        en: {
+          title: 'Reactoonz',
+          desc: 'A bright and dynamic slot with quirky characters and cascading wins mechanics.'
+        }
+      },
+      {
+        id: 'fruitparty',
+        img: 'https://cdn.1win.life/slot-fruitparty.webp',
+        link: 'https://1wcqwj.life/slots/fruit-party',
+        ru: {
+          title: 'Fruit Party',
+          desc: 'Весёлый фруктовый слот с большим количеством выигрышных комбинаций и бонусными функциями.'
+        },
+        en: {
+          title: 'Fruit Party',
+          desc: 'A fun fruit-themed slot with many winning combinations and bonus features.'
+        }
+      },
+      {
+        id: 'jamminjars',
+        img: 'https://cdn.1win.life/slot-jamminjars.webp',
+        link: 'https://1wcqwj.life/slots/jammin-jars',
+        ru: {
+          title: 'Jammin’ Jars',
+          desc: 'Уникальный слот с механикой кластерных выплат и прогрессивным множителем.'
+        },
+        en: {
+          title: 'Jammin’ Jars',
+          desc: 'A unique slot featuring cluster pays and a progressive multiplier.'
+        }
+      },
+      {
+        id: 'megamoolah',
+        img: 'https://cdn.1win.life/slot-megamoolah.webp',
+        link: 'https://1wcqwj.life/slots/mega-moolah',
+        ru: {
+          title: 'Mega Moolah',
+          desc: 'Знаменитый слот с джекпотом, который может изменить жизнь. Высокая волатильность и множество бонусных функций.'
+        },
+        en: {
+          title: 'Mega Moolah',
+          desc: 'The famous jackpot slot that can change your life. High volatility and many bonus features.'
+        }
+      },
+      {
+        id: 'bookofra',
+        img: 'https://cdn.1win.life/slot-bookofra.webp',
+        link: 'https://1wcqwj.life/slots/book-of-ra',
+        ru: {
+          title: 'Book of Ra',
+          desc: 'Классический слот с египетской тематикой, который давно покорил сердца игроков во всем мире.'
+        },
+        en: {
+          title: 'Book of Ra',
+          desc: 'A classic Egyptian-themed slot that has long won the hearts of players worldwide.'
+        }
+      }
+    ];
 
-    renderAdvantages(lang);
-    renderSlots(lang);
+    const texts = {
+      ru: {
+        siteTitle: "1win Казино — Обзор и Топ-10 Слотов",
+        headerTitle: "🔥 Обзор Казино 1win — Игра начинается здесь",
+        heroTitle: "1win — Лидер онлайн-казино 2025",
+        heroDescription: "1win предлагает до 500% бонуса на первый депозит, еженедельный кэшбэк, мгновенные выплаты и более 9000 игр от топовых провайдеров.",
+        heroButton: "Играть на 1win",
+        slotsTitle: "🌟 Топ-10 популярных слотов",
+        footerText: "© 2025 1win Обзор. Все права защищены.",
+        playBtn: "Играть",
+        advantagesTitle: "Преимущества игры в 1win",
+        advantagesList: [
+          "Бонус до 500% на первый депозит — отличный старт для новых игроков.",
+          "Быстрые и безопасные выплаты без задержек.",
+          "Более 9000 игр от лучших провайдеров: слоты, рулетка, покер и ставки.",
+          "Еженедельный кэшбэк до 10% для постоянных клиентов.",
+          "Удобный интерфейс и мобильная версия для игры на ходу.",
+          "Профессиональная поддержка 24/7 на русском и английском."
+        ]
+      },
+      en: {
+        siteTitle: "1win Casino — Review & Top 10 Slots",
+        headerTitle: "🔥 1win Casino Review — Your Winning Starts Here",
+        heroTitle: "1win — The Top Online Casino of 2025",
+        heroDescription: "1win offers up to 500% welcome bonus, weekly cashback, instant payouts, and 9000+ games from top providers.",
+        heroButton: "Play on 1win",
+        slotsTitle: "🌟 Top 10 Popular Slots",
+        footerText: "© 2025 1win Review. All rights reserved.",
+        playBtn: "Play",
+        advantagesTitle: "Advantages of Playing at 1win",
+        advantagesList: [
+          "Up to 500% welcome bonus — great start for new players.",
+          "Fast and secure payouts with no delays.",
+          "Over 9000 games from top providers: slots, roulette, poker, and bets.",
+          "Weekly cashback up to 10% for loyal customers.",
+          "Convenient interface and mobile version for gaming on the go.",
+          "Professional 24/7 support in Russian and English."
+        ]
+      }
+    };
 
-    // Обновляем JSON-LD под язык
-    const jsonldScript = document.getElementById('jsonld-slots');
-    const graph = slotsData.map(slot => ({
-      "@type": "VideoGame",
-      "name": slot[lang].title,
-      "image": slot.img,
-      "url": slot.link,
-      "offers": {
-        "@type": "Offer",
+    function renderAdvantages(lang) {
+      const advTitle = document.getElementById('advantages-title');
+      const advList = document.getElementById('advantages-list');
+      advTitle.textContent = texts[lang].advantagesTitle;
+      advList.innerHTML = '';
+      texts[lang].advantagesList.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        advList.appendChild(li);
+      });
+    }
+
+    function renderSlots(lang) {
+      const container = document.getElementById('slots-container');
+      container.innerHTML = '';
+      slotsData.forEach(slot => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('role', 'listitem');
+        card.innerHTML = `
+          <img src="${slot.img}" alt="${slot[lang].title}" loading="lazy" />
+          <h3>${slot[lang].title}</h3>
+          <p>${slot[lang].desc}</p>
+          <a class="btn" href="${slot.link}" target="_blank" rel="nofollow noopener noreferrer">${texts[lang].playBtn}</a>
+        `;
+        container.appendChild(card);
+      });
+      AOS.refresh();
+    }
+
+    function switchLanguage(lang) {
+      document.documentElement.lang = lang;
+      document.title = texts[lang].siteTitle;
+      document.getElementById('header-title').innerText = texts[lang].headerTitle;
+      document.getElementById('hero-title').innerText = texts[lang].heroTitle;
+      document.getElementById('hero-description').innerText = texts[lang].heroDescription;
+      document.getElementById('hero-button').innerText = texts[lang].heroButton;
+      document.getElementById('hero-button').href = "https://1wcqwj.life";
+      document.getElementById('slots-title').innerText = texts[lang].slotsTitle;
+      document.getElementById('footer-text').innerText = texts[lang].footerText;
+      langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
+
+      renderAdvantages(lang);
+      renderSlots(lang);
+
+      // Обновляем JSON-LD под язык
+      const jsonldScript = document.getElementById('jsonld-slots');
+      const graph = slotsData.map(slot => ({
+        "@type": "VideoGame",
+        "name": slot[lang].title,
+        "image": slot.img,
         "url": slot.link,
-        "availability": "https://schema.org/InStock"
-      },
-      "description": slot[lang].desc,
-      "publisher": {
-        "@type": "Organization",
-        "name": "1win"
-      }
-    }));
-    jsonldScript.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": graph
-    }, null, 2);
+        "offers": {
+          "@type": "Offer",
+          "url": slot.link,
+          "availability": "https://schema.org/InStock"
+        },
+        "description": slot[lang].desc,
+        "publisher": {
+          "@type": "Organization",
+          "name": "1win"
+        }
+      }));
+      jsonldScript.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": graph
+      }, null, 2);
 
-    AOS.refresh();
-  }
-
-  langSwitcher.addEventListener('click', () => {
-    const currentLang = document.documentElement.lang;
-    const newLang = currentLang === 'ru' ? 'en' : 'ru';
-    switchLanguage(newLang);
-  });
-
-  // Автоопределение языка по региону
-  window.addEventListener('DOMContentLoaded', () => {
-    const userLang = navigator.language || navigator.userLanguage;
-    const isCIS = ['ru', 'uk', 'be', 'kk', 'uz', 'ky', 'tg', 'hy'].some(code => userLang.startsWith(code));
-    if (!isCIS) {
-      switchLanguage('en');
-    } else {
-      switchLanguage('ru');
+      AOS.refresh();
     }
-  });
-</script>
+
+    langSwitcher.addEventListener('click', () => {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'ru' ? 'en' : 'ru';
+      switchLanguage(newLang);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language || navigator.userLanguage || 'en';
+      const isCIS = ['ru', 'uk', 'be', 'kk', 'uz', 'ky', 'tg', 'hy'].some(code => userLang.toLowerCase().startsWith(code));
+      if (!isCIS) {
+        switchLanguage('en');
+      } else {
+        switchLanguage('ru');
+      }
+    });
+  </script>
 </body>
 </html>
