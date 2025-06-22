@@ -42,12 +42,13 @@
     .product-card { text-align: center; max-width: 350px; }
     .product-card h3 { margin: 10px 0 5px; }
     .product-card p { font-size: 14px; margin-bottom: 10px; }
-    .btn { background: #ff6600; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block; transition: background-color 0.3s; }
+    .btn { background: #ff6600; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block; transition: background-color 0.3s; cursor: pointer; border: none; font-size: 16px; }
     .btn:hover { background-color: #e05500; }
     .contact-info p { margin: 8px 0; }
     iframe.map { width: 100%; height: 350px; border: none; margin-top: 30px; border-radius: 12px; }
     footer { background: #203a43; color: white; padding: 30px 20px; text-align: center; font-size: 14px; }
 
+    /* Анимации */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -55,6 +56,89 @@
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 2000; 
+      left: 0; 
+      top: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.5); 
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .modal-content {
+      background-color: #fff; 
+      margin: 10% auto; 
+      padding: 30px; 
+      border-radius: 12px; 
+      max-width: 400px; 
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      animation: fadeUp 0.5s ease forwards;
+    }
+    .modal-content h3 {
+      margin-bottom: 20px;
+      color: #203a43;
+      font-size: 24px;
+      text-align: center;
+    }
+    .modal-content label {
+      display: block;
+      margin-bottom: 6px;
+      color: #555;
+      font-weight: 600;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      resize: vertical;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
+    .modal-content textarea {
+      min-height: 80px;
+    }
+    .modal-content .btn-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #888;
+      transition: color 0.3s;
+    }
+    .modal-content .btn-close:hover {
+      color: #ff6600;
+    }
+    .modal-content .btn-submit {
+      width: 100%;
+      background-color: #ff6600;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .modal-content .btn-submit:hover {
+      background-color: #e05500;
+    }
+    .modal-success {
+      text-align: center;
+      font-size: 18px;
+      color: #203a43;
+      padding: 20px 0;
     }
 
     @media (max-width: 768px) {
@@ -83,6 +167,38 @@
     function toggleMenu() {
       document.getElementById("mobileMenu").classList.toggle("active");
     }
+
+    // Открытие модального окна
+    function openModal() {
+      document.getElementById('modal').style.display = 'block';
+      document.getElementById('modalForm').style.display = 'block';
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('modalForm').reset();
+    }
+
+    // Закрытие модального окна
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    // Обработка отправки формы
+    function submitForm(event) {
+      event.preventDefault();
+
+      // Здесь можно добавить валидацию или отправку на сервер через fetch/ajax
+
+      // Просто показываем сообщение об успехе
+      document.getElementById('modalForm').style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
+    }
+
+    // Закрываем модал при клике вне контента
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
   </script>
 </head>
 <body>
@@ -143,13 +259,13 @@
           <img src="https://metallicheckiy-portal.ru/imguser/90/20170127_armatyr_1.jpg" alt="Арматура" />
           <h3>Арматура А3</h3>
           <p>Диаметр: 12 мм – от 45 ₽/м</p>
-          <a href="#contacts" class="btn">Запросить прайс</a>
+          <button class="btn" onclick="openModal()">Запросить прайс</button>
         </div>
         <div class="product-card">
           <img src="https://www.metal-b2b.ru/sites/default/files/metal/erndj4wn.jpg" alt="Лист стальной" />
           <h3>Лист стальной</h3>
           <p>Толщина: 3 мм – от 35 ₽/кг</p>
-          <a href="#contacts" class="btn">Запросить прайс</a>
+          <button class="btn" onclick="openModal()">Запросить прайс</button>
         </div>
       </div>
     </section>
@@ -193,18 +309,4 @@
     <p>&copy; 2025 Завод Металлопроката. Все права защищены.</p>
   </footer>
 
-  <script>
-    // Скрипт меню и скрытия при прокрутке
-    let prevScrollpos = window.pageYOffset;
-    window.onscroll = function () {
-      const nav = document.querySelector("nav");
-      const currentScrollPos = window.pageYOffset;
-      nav.style.top = prevScrollpos > currentScrollPos ? "0" : "-80px";
-      prevScrollpos = currentScrollPos;
-    };
-    function toggleMenu() {
-      document.getElementById("mobileMenu").classList.toggle("active");
-    }
-  </script>
-</body>
-</html>
+ 
