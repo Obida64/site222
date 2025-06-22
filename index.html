@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Обзор Онлайн Казино и Слотов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Обзор Онлайн Казино с Раскрывающимися Описаниями</title>
   <style>
-    /* Сброс и базовые стили */
+    /* Сброс */
     * {
       box-sizing: border-box;
     }
@@ -14,7 +14,9 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f5f7fa;
       color: #333;
-      line-height: 1.6;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     a {
       color: #4f46e5;
@@ -23,84 +25,153 @@
     }
     a:hover {
       color: #3730a3;
+      text-decoration: underline;
     }
+
     header {
       background: linear-gradient(90deg, #4f46e5, #6366f1);
-      padding: 20px;
+      padding: 22px 20px;
       color: white;
       text-align: center;
       font-size: 28px;
       font-weight: 700;
       letter-spacing: 1.5px;
-    }
-    main {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h2 {
-      color: #1e293b;
-      margin-bottom: 10px;
-      border-bottom: 3px solid #4f46e5;
-      display: inline-block;
-      padding-bottom: 5px;
+      user-select: none;
     }
 
-    /* Карточки казино */
+    main {
+      max-width: 1100px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+    }
+
+    h2 {
+      color: #1e293b;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #4f46e5;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    /* Казино карточки */
     .casino-list {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-      gap: 20px;
-      margin-bottom: 50px;
+      gap: 22px;
     }
+
     .casino-card {
       background: white;
-      border-radius: 12px;
+      border-radius: 14px;
       box-shadow: 0 6px 15px rgba(79,70,229,0.15);
-      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease;
+      padding: 20px;
+      user-select: none;
     }
     .casino-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(79,70,229,0.3);
+      box-shadow: 0 12px 28px rgba(79,70,229,0.3);
     }
+
+    .casino-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
     .casino-title {
       font-size: 22px;
       font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .casino-desc {
+      color: #1e293b;
+      margin-bottom: 4px;
       flex-grow: 1;
-      margin-bottom: 12px;
-      color: #475569;
     }
+
     .casino-rating {
       font-weight: 700;
       color: #22c55e;
-      margin-bottom: 12px;
-    }
-    .casino-link {
-      background: #4f46e5;
-      color: white;
-      padding: 12px;
-      text-align: center;
-      border-radius: 8px;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(79,70,229,0.4);
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s ease;
-    }
-    .casino-link:hover {
-      background: #3730a3;
+      font-size: 16px;
+      margin-left: 12px;
+      white-space: nowrap;
     }
 
-    /* Секция слотов */
+    .casino-short-desc {
+      font-size: 15px;
+      color: #475569;
+      margin-bottom: 10px;
+      margin-top: 4px;
+    }
+
+    /* Иконка стрелки для раскрытия */
+    .casino-toggle-icon {
+      font-size: 22px;
+      color: #4f46e5;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .casino-card.active .casino-toggle-icon {
+      transform: rotate(90deg);
+    }
+
+    /* Раскрытый блок */
+    .casino-details {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      background: #f0f4ff;
+      border-radius: 0 0 14px 14px;
+      margin-top: 10px;
+      padding: 0 20px;
+    }
+    .casino-card.active .casino-details {
+      max-height: 500px; /* достаточно для текста и картинок */
+      padding: 20px;
+    }
+
+    .casino-details p {
+      font-size: 15px;
+      color: #334155;
+      margin-bottom: 16px;
+    }
+    .casino-details img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(79,70,229,0.2);
+      user-select: none;
+    }
+
+    .details-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .details-buttons a {
+      background: #4f46e5;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(79,70,229,0.4);
+      transition: background 0.3s ease;
+      text-align: center;
+      flex-grow: 1;
+      min-width: 140px;
+      user-select: none;
+      cursor: pointer;
+    }
+    .details-buttons a:hover {
+      background: #3730a3;
+      text-decoration: none;
+    }
+
+    /* Секция слотов (немного доработаем) */
     .slots-section {
-      margin-bottom: 50px;
+      margin-top: 60px;
     }
     .slot-list {
       display: grid;
@@ -109,54 +180,61 @@
     }
     .slot-card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 15px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      padding: 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: box-shadow 0.3s ease;
+      user-select: none;
+      cursor: pointer;
     }
     .slot-card:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+      transform: translateY(-4px);
     }
     .slot-img {
       width: 100%;
       max-width: 260px;
       height: 140px;
       object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 8px rgba(79,70,229,0.2);
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 5px 12px rgba(79,70,229,0.25);
+      user-select: none;
     }
     .slot-title {
       font-weight: 700;
-      font-size: 18px;
+      font-size: 19px;
       margin-bottom: 6px;
       text-align: center;
       color: #3b82f6;
     }
     .slot-desc {
-      font-size: 14px;
+      font-size: 15px;
       color: #64748b;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      padding: 0 8px;
     }
     .slot-link {
       background: #3b82f6;
       color: white;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-weight: 600;
-      box-shadow: 0 3px 8px rgba(59,130,246,0.4);
-      text-align: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(59,130,246,0.45);
       width: 100%;
-      cursor: pointer;
+      max-width: 260px;
+      text-align: center;
       user-select: none;
+      cursor: pointer;
       transition: background 0.3s ease;
     }
     .slot-link:hover {
       background: #1e40af;
+      text-decoration: none;
     }
 
     /* Футер */
@@ -166,20 +244,41 @@
       font-size: 14px;
       color: #94a3b8;
       border-top: 1px solid #e2e8f0;
-      margin-top: 60px;
+      margin-top: 80px;
+      user-select: none;
     }
 
     /* Мобильная адаптивность */
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       header {
         font-size: 24px;
-        padding: 16px;
+        padding: 18px 15px;
       }
       .casino-title {
         font-size: 20px;
       }
+      .casino-rating {
+        font-size: 14px;
+      }
+      .casino-card {
+        padding: 16px;
+      }
+      .details-buttons a {
+        min-width: 100%;
+        flex-grow: 0;
+      }
+      main {
+        margin: 30px auto 60px;
+        padding: 0 15px;
+      }
       .slot-title {
-        font-size: 16px;
+        font-size: 17px;
+      }
+      .slot-desc {
+        font-size: 14px;
+      }
+      .slot-link {
+        max-width: 100%;
       }
     }
   </style>
@@ -188,29 +287,63 @@
   <header>
     Онлайн Казино & Слоты — Обзоры и Рейтинги
   </header>
+
   <main>
     <section>
       <h2>Лучшие Онлайн Казино</h2>
       <div class="casino-list">
-        <article class="casino-card">
-          <div class="casino-title">Casino Star</div>
-          <div class="casino-desc">Надежное казино с широкой коллекцией слотов и щедрыми бонусами для новых игроков.</div>
-          <div class="casino-rating">Рейтинг: ★★★★☆</div>
-          <a href="https://casino-star.example.com" class="casino-link" target="_blank" rel="nofollow noopener noreferrer">Перейти в казино</a>
+        <article class="casino-card" tabindex="0">
+          <div class="casino-header">
+            <div class="casino-title">Casino Star</div>
+            <div class="casino-rating">Рейтинг: ★★★★☆</div>
+            <div class="casino-toggle-icon" aria-hidden="true">▶</div>
+          </div>
+          <div class="casino-short-desc">Надежное казино с широкой коллекцией слотов и щедрыми бонусами для новых игроков.</div>
+
+          <div class="casino-details" aria-hidden="true">
+            <p>Casino Star предлагает более 2000 слотов от ведущих производителей. Удобный интерфейс, лицензия, быстрые выплаты и эксклюзивные бонусы до $1500 + фриспины.</p>
+            <img src="https://images.unsplash.com/photo-1581091870620-260bfc7d758a?auto=format&fit=crop&w=800&q=60" alt="Casino Star интерфейс" />
+            <div class="details-buttons">
+              <a href="https://casino-star.example.com" target="_blank" rel="nofollow noopener noreferrer" aria-label="Перейти на сайт Casino Star">Перейти в казино</a>
+              <a href="https://casino-star.example.com/promotions" target="_blank" rel="nofollow noopener noreferrer" aria-label="Посмотреть акции Casino Star">Акции и бонусы</a>
+            </div>
+          </div>
         </article>
 
-        <article class="casino-card">
-          <div class="casino-title">Lucky Spins</div>
-          <div class="casino-desc">Много игровых автоматов, быстрые выплаты и удобный интерфейс для мобильных устройств.</div>
-          <div class="casino-rating">Рейтинг: ★★★★★</div>
-          <a href="https://luckyspins.example.com" class="casino-link" target="_blank" rel="nofollow noopener noreferrer">Перейти в казино</a>
+        <article class="casino-card" tabindex="0">
+          <div class="casino-header">
+            <div class="casino-title">Lucky Spins</div>
+            <div class="casino-rating">Рейтинг: ★★★★★</div>
+            <div class="casino-toggle-icon" aria-hidden="true">▶</div>
+          </div>
+          <div class="casino-short-desc">Много игровых автоматов, быстрые выплаты и удобный интерфейс для мобильных устройств.</div>
+
+          <div class="casino-details" aria-hidden="true">
+            <p>Lucky Spins выделяется отличной мобильной версией и большим выбором live-казино. Более 1500 игр и возможность ставить криптовалютой.</p>
+            <img src="https://images.unsplash.com/photo-1569075131212-4a60bbf8c70a?auto=format&fit=crop&w=800&q=60" alt="Lucky Spins мобильное казино" />
+            <div class="details-buttons">
+              <a href="https://luckyspins.example.com" target="_blank" rel="nofollow noopener noreferrer" aria-label="Перейти на сайт Lucky Spins">Перейти в казино</a>
+              <a href="https://luckyspins.example.com/mobile" target="_blank" rel="nofollow noopener noreferrer" aria-label="Посмотреть мобильную версию Lucky Spins">Мобильная версия</a>
+            </div>
+          </div>
         </article>
 
-        <article class="casino-card">
-          <div class="casino-title">Golden Jackpot</div>
-          <div class="casino-desc">Привлекательные джекпоты, круглосуточная поддержка и множество способов пополнения счета.</div>
-          <div class="casino-rating">Рейтинг: ★★★★☆</div>
-          <a href="https://goldenjackpot.example.com" class="casino-link" target="_blank" rel="nofollow noopener noreferrer">Перейти в казино</a>
+        <article class="casino-card" tabindex="0">
+          <div class="casino-header">
+            <div class="casino-title">Golden Jackpot</div>
+            <div class="casino-rating">Рейтинг: ★★★★☆</div>
+            <div class="casino-toggle-icon" aria-hidden="true">▶</div>
+          </div>
+          <div class="casino-short-desc">Привлекательные джекпоты, круглосуточная поддержка и множество способов пополнения счета.</div>
+
+          <div class="casino-details" aria-hidden="true">
+            <p>Golden Jackpot славится своими прогрессивными джекпотами и высоким уровнем безопасности. Более 1000 игр и круглосуточная служба поддержки 24/7.</p>
+            <img src="https://images.unsplash.com/photo-1574169208507-843761748e55?auto=format&fit=crop&w=800&q=60" alt="Golden Jackpot джекпоты" />
+            <div class="details-buttons">
+              <a href="https://goldenjackpot.example.com" target="_blank" rel="nofollow noopener noreferrer" aria-label="Перейти на сайт Golden Jackpot">Перейти в казино</a>
+              <a href="https://goldenjackpot.example.com/support" target="_blank" rel="nofollow noopener noreferrer" aria-label="Обратиться в поддержку Golden Jackpot">Поддержка 24/7</a>
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -218,25 +351,25 @@
     <section class="slots-section">
       <h2>Популярные Слоты</h2>
       <div class="slot-list">
-        <article class="slot-card">
+        <article class="slot-card" tabindex="0">
           <img src="https://images.unsplash.com/photo-1590080877777-41c0c6a5bb36?auto=format&fit=crop&w=400&q=80" alt="Слот Starburst" class="slot-img" />
           <div class="slot-title">Starburst</div>
           <div class="slot-desc">Яркий и динамичный слот с простыми правилами и частыми выигрышами.</div>
-          <a href="https://casino-star.example.com/slots/starburst" class="slot-link" target="_blank" rel="nofollow noopener noreferrer">Играть в Starburst</a>
+          <a href="https://casino-star.example.com/slots/starburst" class="slot-link" target="_blank" rel="nofollow noopener noreferrer" aria-label="Играть в слот Starburst">Играть в Starburst</a>
         </article>
 
-        <article class="slot-card">
+        <article class="slot-card" tabindex="0">
           <img src="https://images.unsplash.com/photo-1578496479555-0e923a57b404?auto=format&fit=crop&w=400&q=80" alt="Слот Gonzo's Quest" class="slot-img" />
           <div class="slot-title">Gonzo's Quest</div>
           <div class="slot-desc">Приключенческий слот с уникальной функцией Avalanche и множителями.</div>
-          <a href="https://luckyspins.example.com/slots/gonzos-quest" class="slot-link" target="_blank" rel="nofollow noopener noreferrer">Играть в Gonzo's Quest</a>
+          <a href="https://luckyspins.example.com/slots/gonzos-quest" class="slot-link" target="_blank" rel="nofollow noopener noreferrer" aria-label="Играть в слот Gonzo's Quest">Играть в Gonzo's Quest</a>
         </article>
 
-        <article class="slot-card">
+        <article class="slot-card" tabindex="0">
           <img src="https://images.unsplash.com/photo-1590080877710-f511b6bb57a7?auto=format&fit=crop&w=400&q=80" alt="Слот Mega Moolah" class="slot-img" />
           <div class="slot-title">Mega Moolah</div>
           <div class="slot-desc">Знаменитый прогрессивный джекпот-слот с возможностью сорвать крупный куш.</div>
-          <a href="https://goldenjackpot.example.com/slots/mega-moolah" class="slot-link" target="_blank" rel="nofollow noopener noreferrer">Играть в Mega Moolah</a>
+          <a href="https://goldenjackpot.example.com/slots/mega-moolah" class="slot-link" target="_blank" rel="nofollow noopener noreferrer" aria-label="Играть в слот Mega Moolah">Играть в Mega Moolah</a>
         </article>
       </div>
     </section>
@@ -245,5 +378,33 @@
   <footer>
     © 2025 Обзор Онлайн Казино. Все права защищены.
   </footer>
+
+  <script>
+    // JS для открытия/закрытия подробностей казино
+    document.querySelectorAll('.casino-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const isActive = card.classList.contains('active');
+        // Закрываем все раскрытые
+        document.querySelectorAll('.casino-card.active').forEach(activeCard => {
+          activeCard.classList.remove('active');
+          activeCard.querySelector('.casino-details').setAttribute('aria-hidden', 'true');
+        });
+        if (!isActive) {
+          card.classList.add('active');
+          card.querySelector('.casino-details').setAttribute('aria-hidden', 'false');
+          // Прокрутка к карточке при открытии (опционально)
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+
+      // Доступность: открытие по клавише Enter или пробел
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
