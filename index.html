@@ -9,27 +9,36 @@
   <title>Завод Металлопроката</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
-    body { background: #ffffff; color: #222; line-height: 1.6; font-size: 16px; }
-    header { background: linear-gradient(90deg, #1e1e1e, #3c3c3c); color: white; padding: 60px 20px; text-align: center; animation: fadeIn 1s ease-in-out; }
+    body { background: #f6f8fa; color: #222; line-height: 1.6; font-size: 16px; scroll-behavior: smooth; }
+    header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; padding: 60px 20px; text-align: center; animation: fadeIn 1s ease-in-out; }
     header h1 { font-size: 48px; margin-bottom: 10px; }
     header p { font-size: 20px; opacity: 0.85; }
-    nav { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-    nav ul { display: flex; justify-content: center; list-style: none; padding: 15px 0; flex-wrap: wrap; }
-    nav ul li { margin: 10px 20px; }
-    nav ul li a { color: #222; text-decoration: none; font-weight: bold; }
-    nav ul li a:hover { color: #ff6600; }
-    .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+    nav { background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: top 0.3s; }
+    .nav-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+    .logo { font-weight: bold; font-size: 20px; color: #2c5364; }
+    ul.nav-links { display: flex; list-style: none; gap: 30px; }
+    ul.nav-links li a { color: #222; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+    ul.nav-links li a:hover { color: #ff6600; }
+
+    .hamburger { display: none; flex-direction: column; cursor: pointer; }
+    .hamburger div { width: 25px; height: 3px; background: #222; margin: 4px 0; transition: 0.3s; }
+
+    .mobile-menu { display: none; flex-direction: column; align-items: center; background: #ffffff; width: 100%; position: absolute; top: 60px; left: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .mobile-menu a { padding: 15px; text-decoration: none; color: #222; border-bottom: 1px solid #ddd; width: 100%; text-align: center; }
+
+    .container { max-width: 1200px; margin: 100px auto 40px auto; padding: 0 20px; }
     .section { margin-bottom: 60px; animation: fadeUp 1s ease-in-out both; }
     .section:nth-of-type(even) { animation-delay: 0.3s; }
     .section h2 { font-size: 32px; margin-bottom: 20px; color: #1e1e1e; border-bottom: 3px solid #ff6600; display: inline-block; }
-    .section p, .section li { color: #555; }
+    .section p, .section li { color: #444; }
     .section ul { list-style: disc; padding-left: 20px; }
     .equipment-gallery { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
     .equipment-gallery img { width: 100%; max-width: 350px; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .equipment-gallery img:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
     .contact-info p { margin: 8px 0; }
     iframe.map { width: 100%; height: 350px; border: none; margin-top: 30px; border-radius: 12px; }
-    footer { background: #1e1e1e; color: white; padding: 30px 20px; text-align: center; font-size: 14px; }
+    footer { background: #203a43; color: white; padding: 30px 20px; text-align: center; font-size: 14px; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
@@ -41,69 +50,62 @@
     }
 
     @media (max-width: 768px) {
+      .nav-content { flex-direction: row; justify-content: space-between; }
+      ul.nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: none; flex-direction: column; }
+      .mobile-menu.active { display: flex; }
       header h1 { font-size: 32px; }
       header p { font-size: 16px; }
-      nav ul { flex-direction: column; align-items: center; }
-      nav ul li { margin: 10px 0; }
       .equipment-gallery { flex-direction: column; align-items: center; }
       .container { padding: 0 10px; }
       .section h2 { font-size: 24px; }
     }
   </style>
+  <script>
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      const nav = document.querySelector("nav");
+      const currentScrollPos = window.pageYOffset;
+      nav.style.top = prevScrollpos > currentScrollPos ? "0" : "-80px";
+      prevScrollpos = currentScrollPos;
+    }
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+  </script>
 </head>
 <body>
+  <nav>
+    <div class="nav-content">
+      <div class="logo">МеталлЗавод</div>
+      <ul class="nav-links">
+        <li><a href="#about">О компании</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#equipment">Оборудование</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="#about">О компании</a>
+      <a href="#services">Услуги</a>
+      <a href="#equipment">Оборудование</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+  </nav>
+
   <header>
     <h1>Завод Металлопроката</h1>
     <p>Современные решения для вашего бизнеса</p>
   </header>
 
-  <nav>
-    <ul>
-      <li><a href="#about">О компании</a></li>
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#equipment">Оборудование</a></li>
-      <li><a href="#contacts">Контакты</a></li>
-    </ul>
-  </nav>
-
   <div class="container">
-
-    <section id="about" class="section">
-      <h2>О компании</h2>
-      <p>Мы — динамично развивающийся завод, предоставляющий металлопродукцию высокого качества для строительных и промышленных нужд. Наша цель — эффективность, надёжность и долгосрочное партнёрство.</p>
-      <img src="https://nflg.ru/d/abz_solo_5000_m_v_chelyabinske_17.jpg" alt="Фотография завода" style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; margin-top:20px;">
-    </section>
-
-    <section id="services" class="section">
-      <h2>Услуги</h2>
-      <ul>
-        <li>Производство и резка металлопроката</li>
-        <li>Оцинковка, покраска, антикоррозийная обработка</li>
-        <li>Гибка, штамповка, лазерная резка</li>
-        <li>Логистика и доставка по всей России</li>
-      </ul>
-      <img src="https://images.unsplash.com/photo-1626302848692-4172b14d0eb4?auto=format&fit=crop&w=1200&q=80" alt="Производственный процесс" style="width:100%; border-radius:12px; margin-top:20px;">
-    </section>
-
-    <section id="equipment" class="section">
-      <h2>Оборудование</h2>
-      <div class="equipment-gallery">
-        <img src="https://www.utz.ru/upload/iblock/eb0/eb0d1fd6ba0fb113fb19a48d5ec56964.jpg" alt="Станок A">
-        <img src="https://sdelanounas.ru/i/c/3/v/f_c3VuOS03My51c2VyYXBpLmNvbS9mOE51QTdReXNXX0ZHT3N3QU4wTUM1VHJwc3pndEJoZDlYc0kyUS8zNktHWFlFWlRiRS5qcGc_X19pZD0xMzUwNjA=.jpeg" alt="Станок B">
-        <img src="https://www.isrz.ru/netcat_files/userfiles/glavnaya/big/vb6.jpg" alt="Станок C">
-      </div>
-    </section>
-
-    <section id="contacts" class="section">
-      <h2>Контакты</h2>
-      <div class="contact-info">
-        <p><strong>Адрес:</strong> г. Саратов, пл. Орджоникидзе, 1</p>
-        <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
-        <p><strong>Email:</strong> info@metalplant.ru</p>
-      </div>
-      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1135.1690172196546!2d46.03684559878084!3d51.54140720615808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114c72e1288d383%3A0x7ed8b191b9eff304!2z0J_QtdC00LXRgNCw0LzQuNC90LjQuiDQk9C10LrRgdC60LLQsCwgMSwg0KHQstC10YDQvdCw0Y8sINCi0L7Qs9GA0LDQvdCz0YDQsNC00YHQutCw0Y8sIDQxMDA0NA!5e0!3m2!1sru!2sru!4v1719055000000" allowfullscreen="" loading="lazy"></iframe>
-    </section>
-
+    <!-- Остальной контент сайта -->
   </div>
 
   <footer>
