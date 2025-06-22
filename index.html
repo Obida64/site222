@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Обзор казино 1win и топовых слотов: Lucky Jet, Sweet Bonanza и Gates of Olympus. Актуальные бонусы и преимущества 2025 года." />
-  <meta name="keywords" content="1win, казино, слоты, Lucky Jet, Sweet Bonanza, Gates of Olympus, бонусы, играть в онлайн казино" />
+  <meta name="description" content="Обзор казино 1win и топ-10 популярных слотов. Актуальные бонусы, преимущества и лучшие игры 2025 года." />
+  <meta name="keywords" content="1win, казино, слоты, топ слотов, бонусы, Lucky Jet, Sweet Bonanza, Gates of Olympus, Aztec Magic, Book of Dead, Reactoonz, Fruit Party, Jammin’ Jars, Mega Moolah, игра в казино" />
   <meta name="author" content="1win Обзор" />
   <meta name="theme-color" content="#0ea5e9" />
   <meta name="color-scheme" content="dark light" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title id="site-title">1win Казино — Обзор и Популярные Слоты</title>
+  <title id="site-title">1win Казино — Обзор и Топ-10 Слотов</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
@@ -20,6 +20,9 @@
       font-family: 'Rubik', sans-serif;
       background: #0f172a;
       color: #cbd5e1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
       background: linear-gradient(90deg, #0ea5e9, #2563eb);
@@ -27,6 +30,7 @@
       text-align: center;
       color: #fff;
       position: relative;
+      flex-shrink: 0;
     }
     header h1 {
       margin: 0;
@@ -43,11 +47,18 @@
       border-radius: 8px;
       font-size: 0.9rem;
       cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #lang-switcher:hover {
+      background-color: #3b82f6;
     }
     main {
       max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
+      margin: 40px auto;
+      padding: 0 20px 60px 20px;
+      flex-grow: 1;
+      width: 100%;
     }
     .hero {
       background: url('https://images.unsplash.com/photo-1591054332822-4bb7810eb32c?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
@@ -55,89 +66,109 @@
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 0 40px rgba(14, 165, 233, 0.4);
+      margin-bottom: 60px;
     }
     .hero h2 {
       color: white;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 10px;
+      line-height: 1.1;
     }
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 30px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #dbeafe;
     }
     .btn {
       display: inline-block;
       background: linear-gradient(90deg, #06b6d4, #3b82f6);
       color: white;
-      padding: 10px 16px;
-      font-size: 0.85rem;
+      padding: 14px 24px;
+      font-size: 1rem;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
       text-decoration: none;
       font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
       max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      text-align: center;
       cursor: pointer;
+      user-select: none;
     }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    .btn:hover, .btn:focus {
+      transform: scale(1.07);
+      box-shadow: 0 10px 28px rgba(59, 130, 246, 0.7);
+      outline: none;
     }
     .section {
       margin-top: 60px;
     }
     .section h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #0ea5e9;
+      font-size: 2.4rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #0ea5e9;
       display: inline-block;
+      padding-bottom: 6px;
+      font-weight: 700;
+      color: #38bdf8;
     }
     .card-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
     }
     .card {
       background: #1e293b;
-      border-radius: 16px;
+      border-radius: 20px;
       padding: 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: transform 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(14, 165, 233, 0.6);
     }
     .card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      user-select: none;
     }
     .card h3 {
-      margin-top: 0;
-      font-size: 1.4rem;
+      margin: 0 0 12px 0;
+      font-size: 1.5rem;
       color: #22d3ee;
+      font-weight: 700;
     }
     .card p {
-      font-size: 0.95rem;
+      flex-grow: 1;
+      font-size: 1rem;
       color: #94a3b8;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      line-height: 1.4;
     }
     footer {
       text-align: center;
-      padding: 30px;
-      font-size: 0.9rem;
+      padding: 40px 20px;
+      font-size: 1rem;
       color: #64748b;
+      background: #111827;
+      flex-shrink: 0;
     }
     @media (max-width: 600px) {
       .hero h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       .hero p {
         font-size: 1rem;
@@ -145,9 +176,15 @@
       .btn {
         display: block;
         width: 100%;
-        font-size: 0.9rem;
-        padding: 12px;
+        font-size: 1rem;
+        padding: 14px;
         margin-top: 10px;
+      }
+      .card img {
+        height: 140px;
+      }
+      .card-list {
+        gap: 18px;
       }
     }
   </style>
@@ -155,8 +192,9 @@
 <body>
 <header data-aos="fade-down">
   <h1 id="header-title">🔥 Обзор Казино 1win — Игра начинается здесь</h1>
-  <button id="lang-switcher">EN</button>
+  <button id="lang-switcher" aria-label="Переключить язык">EN</button>
 </header>
+
 <main>
   <section class="hero" data-aos="zoom-in">
     <h2 id="hero-title">1win — Лидер онлайн-казино 2025</h2>
@@ -165,29 +203,13 @@
   </section>
 
   <section class="section" data-aos="fade-up">
-    <h2>🌟 Популярные слоты</h2>
-    <div class="card-list">
-      <div class="card" data-aos="fade-up">
-        <img src="https://cdn.1win.life/slot-luckyjet.webp" alt="Lucky Jet" />
-        <h3>Lucky Jet</h3>
-        <p>Одна из самых популярных игр в стиле crash, где ваша задача — вовремя нажать «Забрать». Чем дольше держите ставку, тем выше множитель, но можно всё потерять. Захватывающий риск и шанс на огромный выигрыш.</p>
-        <a class="btn" href="https://1wcqwj.life/slots/lucky-jet" target="_blank" rel="nofollow noopener noreferrer">Играть</a>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://cdn.1win.life/slot-sweetbonanza.webp" alt="Sweet Bonanza" />
-        <h3>Sweet Bonanza</h3>
-        <p>Яркий фруктовый слот от Pragmatic Play с каскадными выплатами, возможностью купить бонус-игру и RTP около 96.5%. Отличный выбор для любителей сладких побед.</p>
-        <a class="btn" href="https://1wcqwj.life/slots/sweet-bonanza" target="_blank" rel="nofollow noopener noreferrer">Играть</a>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://cdn.1win.life/slot-gatesofolympus.webp" alt="Gates of Olympus" />
-        <h3>Gates of Olympus</h3>
-        <p>Мифологический слот, где Зевс может в любой момент бросить молнию и добавить мощные множители. Один из самых эпичных слотов с высокой волатильностью и зрелищными бонусами.</p>
-        <a class="btn" href="https://1wcqwj.life/slots/gates-of-olympus" target="_blank" rel="nofollow noopener noreferrer">Играть</a>
-      </div>
+    <h2 id="slots-title">🌟 Топ-10 популярных слотов</h2>
+    <div class="card-list" id="slots-container">
+      <!-- Карточки слотов вставляются скриптом -->
     </div>
   </section>
 </main>
+
 <footer data-aos="fade-up">
   <p id="footer-text">© 2025 1win Обзор. Все права защищены.</p>
 </footer>
@@ -197,34 +219,183 @@
   AOS.init({ once: true });
 
   const langSwitcher = document.getElementById('lang-switcher');
-  const elements = {
+
+  // Данные слотов: id, картинки, ссылки, описания для RU и EN
+  const slotsData = [
+    {
+      id: 'luckyjet',
+      img: 'https://cdn.1win.life/slot-luckyjet.webp',
+      link: 'https://1wcqwj.life/slots/lucky-jet',
+      ru: {
+        title: 'Lucky Jet',
+        desc: 'Одна из самых популярных игр в стиле crash, где ваша задача — вовремя нажать «Забрать». Чем дольше держите ставку, тем выше множитель, но можно всё потерять. Захватывающий риск и шанс на огромный выигрыш.'
+      },
+      en: {
+        title: 'Lucky Jet',
+        desc: 'One of the most popular crash-style games where your task is to cash out in time. The longer you hold your bet, the higher the multiplier, but you can lose everything. Exciting risk and chance for huge winnings.'
+      }
+    },
+    {
+      id: 'sweetbonanza',
+      img: 'https://cdn.1win.life/slot-sweetbonanza.webp',
+      link: 'https://1wcqwj.life/slots/sweet-bonanza',
+      ru: {
+        title: 'Sweet Bonanza',
+        desc: 'Яркий фруктовый слот от Pragmatic Play с каскадными выплатами, возможностью купить бонус-игру и RTP около 96.5%. Отличный выбор для любителей сладких побед.'
+      },
+      en: {
+        title: 'Sweet Bonanza',
+        desc: 'A bright fruit-themed slot by Pragmatic Play featuring cascading wins, the option to buy bonus games, and RTP around 96.5%. A great choice for fans of sweet wins.'
+      }
+    },
+    {
+      id: 'gatesofolympus',
+      img: 'https://cdn.1win.life/slot-gatesofolympus.webp',
+      link: 'https://1wcqwj.life/slots/gates-of-olympus',
+      ru: {
+        title: 'Gates of Olympus',
+        desc: 'Мифологический слот, где Зевс может в любой момент бросить молнию и добавить мощные множители. Один из самых эпичных слотов с высокой волатильностью и зрелищными бонусами.'
+      },
+      en: {
+        title: 'Gates of Olympus',
+        desc: 'A mythological slot where Zeus can strike lightning anytime adding powerful multipliers. One of the most epic slots with high volatility and spectacular bonuses.'
+      }
+    },
+    {
+      id: 'aztecmagic',
+      img: 'https://cdn.1win.life/slot-aztecmagic.webp',
+      link: 'https://1wcqwj.life/slots/aztec-magic',
+      ru: {
+        title: 'Aztec Magic',
+        desc: 'Захватывающий слот с тематикой древних цивилизаций, множеством бонусов и свободными вращениями. Отлично подходит для любителей классики с современными функциями.'
+      },
+      en: {
+        title: 'Aztec Magic',
+        desc: 'An exciting slot themed on ancient civilizations, packed with bonuses and free spins. Perfect for fans of classic style with modern features.'
+      }
+    },
+    {
+      id: 'bookofdead',
+      img: 'https://cdn.1win.life/slot-bookofdead.webp',
+      link: 'https://1wcqwj.life/slots/book-of-dead',
+      ru: {
+        title: 'Book of Dead',
+        desc: 'Легендарный слот с приключениями и поисками сокровищ. Высокая волатильность и возможность больших выигрышей делают игру очень популярной.'
+      },
+      en: {
+        title: 'Book of Dead',
+        desc: 'The legendary slot featuring adventures and treasure hunts. High volatility and big win potential make it very popular.'
+      }
+    },
+    {
+      id: 'reactoonz',
+      img: 'https://cdn.1win.life/slot-reactoonz.webp',
+      link: 'https://1wcqwj.life/slots/reactoonz',
+      ru: {
+        title: 'Reactoonz',
+        desc: 'Яркий и динамичный слот с необычными персонажами и механикой каскадных выигрышей. Каждый спин приносит неожиданные возможности.'
+      },
+      en: {
+        title: 'Reactoonz',
+        desc: 'A bright and dynamic slot with quirky characters and cascading wins mechanics. Every spin offers unexpected chances.'
+      }
+    },
+    {
+      id: 'fruitparty',
+      img: 'https://cdn.1win.life/slot-fruitparty.webp',
+      link: 'https://1wcqwj.life/slots/fruit-party',
+      ru: {
+        title: 'Fruit Party',
+        desc: 'Весёлый фруктовый слот с большим количеством выигрышных комбинаций и бонусными функциями. Яркий дизайн и лёгкое управление.'
+      },
+      en: {
+        title: 'Fruit Party',
+        desc: 'A fun fruit-themed slot with many winning combinations and bonus features. Bright design and easy gameplay.'
+      }
+    },
+    {
+      id: 'jamminjars',
+      img: 'https://cdn.1win.life/slot-jamminjars.webp',
+      link: 'https://1wcqwj.life/slots/jammin-jars',
+      ru: {
+        title: 'Jammin’ Jars',
+        desc: 'Уникальный слот с механикой кластерных выплат и прогрессивным множителем. Очень увлекательный и красочный.'
+      },
+      en: {
+        title: 'Jammin’ Jars',
+        desc: 'A unique slot featuring cluster pays and a progressive multiplier. Very engaging and colorful.'
+      }
+    },
+    {
+      id: 'megamoolah',
+      img: 'https://cdn.1win.life/slot-megamoolah.webp',
+      link: 'https://1wcqwj.life/slots/mega-moolah',
+      ru: {
+        title: 'Mega Moolah',
+        desc: 'Знаменитый слот с джекпотом, который может изменить жизнь. Высокая волатильность и множество бонусных функций.'
+      },
+      en: {
+        title: 'Mega Moolah',
+        desc: 'The famous jackpot slot that can change your life. High volatility and many bonus features.'
+      }
+    }
+  ];
+
+  // Тексты для главных элементов в двух языках
+  const texts = {
     ru: {
-      title: "1win Казино — Обзор и Популярные Слоты",
-      header: "🔥 Обзор Казино 1win — Игра начинается здесь",
+      siteTitle: "1win Казино — Обзор и Топ-10 Слотов",
+      headerTitle: "🔥 Обзор Казино 1win — Игра начинается здесь",
       heroTitle: "1win — Лидер онлайн-казино 2025",
-      heroDesc: "1win предлагает до 500% бонуса на первый депозит, еженедельный кэшбэк, мгновенные выплаты и более 9000 игр от топовых провайдеров.",
-      heroBtn: "Играть на 1win",
-      footer: "© 2025 1win Обзор. Все права защищены."
+      heroDescription: "1win предлагает до 500% бонуса на первый депозит, еженедельный кэшбэк, мгновенные выплаты и более 9000 игр от топовых провайдеров.",
+      heroButton: "Играть на 1win",
+      slotsTitle: "🌟 Топ-10 популярных слотов",
+      footerText: "© 2025 1win Обзор. Все права защищены.",
+      playBtn: "Играть"
     },
     en: {
-      title: "1win Casino — Review & Top Slots",
-      header: "🔥 1win Casino Review — Your Winning Starts Here",
+      siteTitle: "1win Casino — Review & Top 10 Slots",
+      headerTitle: "🔥 1win Casino Review — Your Winning Starts Here",
       heroTitle: "1win — The Top Online Casino of 2025",
-      heroDesc: "1win offers up to 500% welcome bonus, weekly cashback, instant payouts, and 9000+ games from top providers.",
-      heroBtn: "Play on 1win",
-      footer: "© 2025 1win Review. All rights reserved."
+      heroDescription: "1win offers up to 500% welcome bonus, weekly cashback, instant payouts, and 9000+ games from top providers.",
+      heroButton: "Play on 1win",
+      slotsTitle: "🌟 Top 10 Popular Slots",
+      footerText: "© 2025 1win Review. All rights reserved.",
+      playBtn: "Play"
     }
   };
 
+  // Функция рендера слотов в контейнер
+  function renderSlots(lang) {
+    const container = document.getElementById('slots-container');
+    container.innerHTML = ''; // Очистить перед вставкой
+    slotsData.forEach(slot => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.setAttribute('data-aos', 'fade-up');
+      card.innerHTML = `
+        <img src="${slot.img}" alt="${slot[lang].title}" loading="lazy" />
+        <h3>${slot[lang].title}</h3>
+        <p>${slot[lang].desc}</p>
+        <a class="btn" href="${slot.link}" target="_blank" rel="nofollow noopener noreferrer">${texts[lang].playBtn}</a>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  // Функция переключения языка
   function switchLanguage(lang) {
     document.documentElement.lang = lang;
-    document.title = elements[lang].title;
-    document.getElementById('header-title').innerText = elements[lang].header;
-    document.getElementById('hero-title').innerText = elements[lang].heroTitle;
-    document.getElementById('hero-description').innerText = elements[lang].heroDesc;
-    document.getElementById('hero-button').innerText = elements[lang].heroBtn;
-    document.getElementById('footer-text').innerText = elements[lang].footer;
+    document.title = texts[lang].siteTitle;
+    document.getElementById('header-title').innerText = texts[lang].headerTitle;
+    document.getElementById('hero-title').innerText = texts[lang].heroTitle;
+    document.getElementById('hero-description').innerText = texts[lang].heroDescription;
+    document.getElementById('hero-button').innerText = texts[lang].heroButton;
+    document.getElementById('slots-title').innerText = texts[lang].slotsTitle;
+    document.getElementById('footer-text').innerText = texts[lang].footerText;
     langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
+    renderSlots(lang);
+    AOS.refresh();
   }
 
   langSwitcher.addEventListener('click', () => {
@@ -233,12 +404,16 @@
     switchLanguage(newLang);
   });
 
+  // Автоопределение языка пользователя (если не СНГ - английский)
   window.addEventListener('DOMContentLoaded', () => {
     const userLang = navigator.language || navigator.userLanguage;
     const isCIS = ['ru', 'uk', 'be', 'kk', 'uz', 'ky', 'tg', 'hy'].some(code => userLang.startsWith(code));
-    if (!isCIS) switchLanguage('en');
+    if (!isCIS) {
+      switchLanguage('en');
+    } else {
+      switchLanguage('ru');
+    }
   });
 </script>
-
 </body>
 </html>
