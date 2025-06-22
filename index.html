@@ -253,115 +253,6 @@
         font-size: 1.4rem;
       }
     }
-    .reviews {
-  max-width: 1200px;
-  margin: 60px auto 0;
-  padding: 0 20px;
-  color: #e0e7ff;
-}
-
-.reviews h2 {
-  font-size: 2.4rem;
-  margin-bottom: 40px;
-  border-bottom: 3px solid #0ea5e9;
-  display: inline-block;
-  padding-bottom: 6px;
-  font-weight: 700;
-  color: #38bdf8;
-  user-select: none;
-}
-
-.reviews-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 28px;
-}
-
-.review-card {
-  background: #1e293b;
-  border-radius: 20px;
-  padding: 25px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-  display: flex;
-  flex-direction: column;
-  user-select: text;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.review-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.7);
-}
-
-.review-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.review-avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 16px;
-  user-select: none;
-  pointer-events: none;
-  box-shadow: 0 0 8px rgba(14, 165, 233, 0.5);
-}
-
-.review-name {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #38bdf8;
-}
-
-.review-rating {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
-
-.review-rating svg {
-  width: 20px;
-  height: 20px;
-  fill: #0ea5e9;
-  margin-left: 2px;
-}
-
-.review-text {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #a5b4fc;
-  margin-top: 6px;
-  user-select: text;
-}
-
-/* Адаптив для мобильных */
-@media (max-width: 600px) {
-  .reviews h2 {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-  }
-  .review-card {
-    padding: 20px 15px;
-  }
-  .review-avatar {
-    width: 48px;
-    height: 48px;
-    margin-right: 12px;
-  }
-  .review-name {
-    font-size: 1rem;
-  }
-  .review-rating svg {
-    width: 18px;
-    height: 18px;
-  }
-  .review-text {
-    font-size: 0.9rem;
-  }
-}
   </style>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </head>
@@ -379,10 +270,6 @@
     <section class="advantages" aria-label="Преимущества игры в 1win">
       <h3 id="advantages-title">Преимущества игры в 1win</h3>
       <ul id="advantages-list"></ul>
-    </section>
-    <section class="reviews section" aria-label="Отзывы игроков">
-    <h2 id="reviews-title">Отзывы игроков</h2>
-    <div id="reviews-container" class="reviews-list" role="list"></div>
     </section>
     <section aria-label="Топ-10 популярных слотов" class="section">
       <h2 id="slots-title">🌟 Топ-10 популярных слотов</h2>
@@ -536,47 +423,6 @@
         }
       }
     ];
-const reviewsData = [
-  {
-    id: 'user1',
-    avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
-    ru: {
-      name: 'Алексей П.',
-      text: 'Отличное казино с быстрыми выплатами и честной игрой! Очень доволен бонусами и поддержкой.'
-    },
-    en: {
-      name: 'Alex P.',
-      text: 'Great casino with fast payouts and fair play! Really happy with bonuses and support.'
-    },
-    rating: 5
-  },
-  {
-    id: 'user2',
-    avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
-    ru: {
-      name: 'Марина С.',
-      text: 'Интерфейс удобный, много слотов, всегда можно найти что-то интересное. Кэшбэк — приятный бонус.'
-    },
-    en: {
-      name: 'Marina S.',
-      text: 'User-friendly interface, many slots, always something interesting to play. Cashback is a nice bonus.'
-    },
-    rating: 4
-  },
-  {
-    id: 'user3',
-    avatar: 'https://randomuser.me/api/portraits/men/79.jpg',
-    ru: {
-      name: 'Дмитрий К.',
-      text: 'Играл в несколько слотов, очень понравилась графика и бонусные раунды. Рекомендую!'
-    },
-    en: {
-      name: 'Dmitry K.',
-      text: 'Played several slots, really liked the graphics and bonus rounds. Recommended!'
-    },
-    rating: 5
-  }
-];
 
     const texts = {
       ru: {
@@ -630,46 +476,6 @@ const reviewsData = [
         advList.appendChild(li);
       });
     }
-function renderReviews(lang) {
-  const container = document.getElementById('reviews-container');
-  container.innerHTML = '';
-  reviewsData.forEach(review => {
-    const card = document.createElement('div');
-    card.className = 'review-card';
-    card.setAttribute('data-aos', 'fade-up');
-    card.setAttribute('role', 'listitem');
-
-    // Рендерим звёзды (rating)
-    let starsHTML = '';
-    for (let i = 1; i <= 5; i++) {
-      starsHTML += i <= review.rating ? fullStarSVG : emptyStarSVG;
-    }
-
-    card.innerHTML = `
-      <div class="review-header">
-        <img src="${review.avatar}" alt="Фото ${review[lang].name}" class="review-avatar" loading="lazy" />
-        <div class="review-name">${review[lang].name}</div>
-        <div class="review-rating" aria-label="Рейтинг ${review.rating} из 5">${starsHTML}</div>
-      </div>
-      <div class="review-text">${review[lang].text}</div>
-    `;
-    container.appendChild(card);
-  });
-  AOS.refresh();
-}
-
-// SVG звёзд (заполенная и пустая) - вынесем отдельно
-const fullStarSVG = `
-  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-    <path d="M10 1.5l2.9 6.1 6.7 1-4.8 4.7 1.1 6.6-6-3.2-6 3.2 1.1-6.6-4.8-4.7 6.7-1z"></path>
-  </svg>
-`;
-
-const emptyStarSVG = `
-  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" fill="none" stroke="#0ea5e9" stroke-width="1.5">
-    <path d="M10 1.5l2.9 6.1 6.7 1-4.8 4.7 1.1 6.6-6-3.2-6 3.2 1.1-6.6-4.8-4.7 6.7-1z"></path>
-  </svg>
-`;
 
     function renderSlots(lang) {
       const container = document.getElementById('slots-container');
@@ -689,37 +495,6 @@ const emptyStarSVG = `
       });
       AOS.refresh();
     }
-    // Рендерим звёзды (rating)
-    let starsHTML = '';
-    for (let i = 1; i <= 5; i++) {
-      starsHTML += i <= review.rating ? fullStarSVG : emptyStarSVG;
-    }
-
-    card.innerHTML = `
-      <div class="review-header">
-        <img src="${review.avatar}" alt="Фото ${review[lang].name}" class="review-avatar" loading="lazy" />
-        <div class="review-name">${review[lang].name}</div>
-        <div class="review-rating" aria-label="Рейтинг ${review.rating} из 5">${starsHTML}</div>
-      </div>
-      <div class="review-text">${review[lang].text}</div>
-    `;
-    container.appendChild(card);
-  });
-  AOS.refresh();
-}
-
-// SVG звёзд (заполенная и пустая) - вынесем отдельно
-const fullStarSVG = `
-  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-    <path d="M10 1.5l2.9 6.1 6.7 1-4.8 4.7 1.1 6.6-6-3.2-6 3.2 1.1-6.6-4.8-4.7 6.7-1z"></path>
-  </svg>
-`;
-
-const emptyStarSVG = `
-  <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false" fill="none" stroke="#0ea5e9" stroke-width="1.5">
-    <path d="M10 1.5l2.9 6.1 6.7 1-4.8 4.7 1.1 6.6-6-3.2-6 3.2 1.1-6.6-4.8-4.7 6.7-1z"></path>
-  </svg>
-`;
 
     function switchLanguage(lang) {
       document.documentElement.lang = lang;
@@ -734,7 +509,6 @@ const emptyStarSVG = `
       langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
 
       renderAdvantages(lang);
-      renderReviews(lang);
       renderSlots(lang);
 
       // Обновляем JSON-LD под язык
