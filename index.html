@@ -6,6 +6,7 @@
   <meta name="description" content="Завод металлопроката — качественная металлопродукция и профессиональные услуги.">
   <meta name="keywords" content="металл, завод, металлопрокат, услуги, продукция">
   <meta name="author" content="Завод Металлопроката">
+  <link rel="icon" href="https://st2.depositphotos.com/2101949/9777/v/450/depositphotos_97776966-stock-illustration-creative-vector-logo-design.jpg" type="image/png" />
   <title>Завод Металлопроката</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
@@ -33,9 +34,13 @@
     .section h2 { font-size: 32px; margin-bottom: 20px; color: #1e1e1e; border-bottom: 3px solid #ff6600; display: inline-block; }
     .section p, .section li { color: #444; }
     .section ul { list-style: disc; padding-left: 20px; }
-    .equipment-gallery { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-    .equipment-gallery img { width: 100%; max-width: 350px; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .equipment-gallery img:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+    .equipment-gallery, .product-list { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+    .equipment-gallery img, .product-card img { width: 100%; max-width: 350px; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .equipment-gallery img:hover, .product-card img:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+    .product-card { text-align: center; max-width: 350px; }
+    .product-card h3 { margin: 10px 0 5px; }
+    .product-card p { font-size: 14px; margin-bottom: 10px; }
+    .btn { background: #ff6600; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block; }
     .contact-info p { margin: 8px 0; }
     iframe.map { width: 100%; height: 350px; border: none; margin-top: 30px; border-radius: 12px; }
     footer { background: #203a43; color: white; padding: 30px 20px; text-align: center; font-size: 14px; }
@@ -57,7 +62,7 @@
       .mobile-menu.active { display: flex; }
       header h1 { font-size: 32px; }
       header p { font-size: 16px; }
-      .equipment-gallery { flex-direction: column; align-items: center; }
+      .equipment-gallery, .product-list { flex-direction: column; align-items: center; }
       .container { padding: 0 10px; }
       .section h2 { font-size: 24px; }
     }
@@ -82,7 +87,9 @@
       <ul class="nav-links">
         <li><a href="#about">О компании</a></li>
         <li><a href="#services">Услуги</a></li>
-        <li><a href="#equipment">Оборудование</a></li>
+        <li><a href="#catalog">Каталог</a></li>
+        <li><a href="#projects">Проекты</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacts">Контакты</a></li>
       </ul>
       <div class="hamburger" onclick="toggleMenu()">
@@ -94,7 +101,9 @@
     <div id="mobileMenu" class="mobile-menu">
       <a href="#about">О компании</a>
       <a href="#services">Услуги</a>
-      <a href="#equipment">Оборудование</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#projects">Проекты</a>
+      <a href="#faq">FAQ</a>
       <a href="#contacts">Контакты</a>
     </div>
   </nav>
@@ -122,13 +131,41 @@
       <img src="https://images.unsplash.com/photo-1626302848692-4172b14d0eb4?auto=format&fit=crop&w=1200&q=80" alt="Производственный процесс" style="width:100%; border-radius:12px; margin-top:20px;">
     </section>
 
-    <section id="equipment" class="section">
-      <h2>Оборудование</h2>
-      <div class="equipment-gallery">
-        <img src="https://www.utz.ru/upload/iblock/eb0/eb0d1fd6ba0fb113fb19a48d5ec56964.jpg" alt="Станок A">
-        <img src="https://sdelanounas.ru/i/c/3/v/f_c3VuOS03My51c2VyYXBpLmNvbS9mOE51QTdReXNXX0ZHT3N3QU4wTUM1VHJwc3pndEJoZDlYc0kyUS8zNktHWFlFWlRiRS5qcGc_X19pZD0xMzUwNjA=.jpeg" alt="Станок B">
-        <img src="https://www.isrz.ru/netcat_files/userfiles/glavnaya/big/vb6.jpg" alt="Станок C">
+    <section id="catalog" class="section">
+      <h2>Каталог продукции</h2>
+      <div class="product-list">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1626222994622-b6a92b1832da?auto=format&fit=crop&w=600&q=80" alt="Арматура">
+          <h3>Арматура А3</h3>
+          <p>Диаметр: 12 мм – от 45 ₽/м</p>
+          <a href="#contacts" class="btn">Запросить прайс</a>
+        </div>
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1573497019433-3b6b06a8aeb1?auto=format&fit=crop&w=600&q=80" alt="Лист металла">
+          <h3>Лист стальной</h3>
+          <p>Толщина: 3 мм – от 35 ₽/кг</p>
+          <a href="#contacts" class="btn">Запросить прайс</a>
+        </div>
       </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Наши проекты</h2>
+      <p>Мы поставляем металлопрокат для строительства промышленных объектов, жилых комплексов и инфраструктурных решений. Ниже — некоторые из них:</p>
+      <ul>
+        <li>Завод «Волгосталь» — 120 тонн арматуры</li>
+        <li>ЖК «Гагарин Парк» — поставка балок и швеллеров</li>
+        <li>Мост через р. Сейм — индивидуальные металлические конструкции</li>
+      </ul>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>Часто задаваемые вопросы</h2>
+      <ul>
+        <li><strong>Какой минимальный объём заказа?</strong> — От 1 тонны или по согласованию.</li>
+        <li><strong>Как оформить доставку?</strong> — Укажите адрес при заказе, и мы предложим варианты доставки.</li>
+        <li><strong>Есть ли сертификаты на продукцию?</strong> — Да, вся продукция сертифицирована по ГОСТ.</li>
+      </ul>
     </section>
 
     <section id="contacts" class="section">
