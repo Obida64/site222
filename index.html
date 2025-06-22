@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="description" content="Обзор казино 1win и топ-10 популярных слотов. Актуальные бонусы, преимущества и лучшие игры 2025 года." />
   <meta name="keywords" content="1win, казино, слоты, топ слотов, бонусы, Lucky Jet, Sweet Bonanza, Gates of Olympus, Aztec Magic, Book of Dead, Reactoonz, Fruit Party, Jammin’ Jars, Mega Moolah, игра в казино" />
   <meta name="author" content="1win Обзор" />
@@ -15,6 +15,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <style>
+    /* Общие стили */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Rubik', sans-serif;
@@ -23,6 +27,8 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     header {
       background: linear-gradient(90deg, #0ea5e9, #2563eb);
@@ -31,10 +37,13 @@
       color: #fff;
       position: relative;
       flex-shrink: 0;
+      user-select: none;
     }
     header h1 {
       margin: 0;
       font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.1;
     }
     #lang-switcher {
       position: absolute;
@@ -43,15 +52,18 @@
       background: #1e40af;
       color: #fff;
       border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 6px 14px;
+      border-radius: 10px;
       font-size: 0.9rem;
       cursor: pointer;
       user-select: none;
       transition: background-color 0.3s ease;
+      font-weight: 600;
     }
-    #lang-switcher:hover {
+    #lang-switcher:hover,
+    #lang-switcher:focus {
       background-color: #3b82f6;
+      outline: none;
     }
     main {
       max-width: 1200px;
@@ -67,12 +79,14 @@
       text-align: center;
       box-shadow: 0 0 40px rgba(14, 165, 233, 0.4);
       margin-bottom: 60px;
+      user-select: none;
     }
     .hero h2 {
       color: white;
       font-size: 2.8rem;
       margin-bottom: 10px;
       line-height: 1.1;
+      font-weight: 700;
     }
     .hero p {
       font-size: 1.3rem;
@@ -81,9 +95,13 @@
       margin-left: auto;
       margin-right: auto;
       color: #dbeafe;
+      font-weight: 400;
+      line-height: 1.5;
     }
     .btn {
       display: inline-block;
+      max-width: 260px;
+      width: 100%;
       background: linear-gradient(90deg, #06b6d4, #3b82f6);
       color: white;
       padding: 14px 24px;
@@ -94,14 +112,18 @@
       font-weight: 700;
       transition: transform 0.2s ease, box-shadow 0.3s ease;
       box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
-      max-width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
       user-select: none;
+      text-align: center;
+      -webkit-tap-highlight-color: transparent;
+      margin-top: 12px;
+      box-sizing: border-box;
     }
-    .btn:hover, .btn:focus {
+    .btn:hover,
+    .btn:focus {
       transform: scale(1.07);
       box-shadow: 0 10px 28px rgba(59, 130, 246, 0.7);
       outline: none;
@@ -117,6 +139,7 @@
       padding-bottom: 6px;
       font-weight: 700;
       color: #38bdf8;
+      user-select: none;
     }
     .card-list {
       display: grid;
@@ -132,6 +155,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      user-select: none;
     }
     .card:hover {
       transform: translateY(-8px);
@@ -144,19 +168,22 @@
       border-radius: 16px;
       margin-bottom: 18px;
       user-select: none;
+      pointer-events: none;
     }
     .card h3 {
       margin: 0 0 12px 0;
       font-size: 1.5rem;
       color: #22d3ee;
       font-weight: 700;
+      user-select: text;
     }
     .card p {
       flex-grow: 1;
       font-size: 1rem;
       color: #94a3b8;
-      margin-bottom: 18px;
+      margin-bottom: 6px;
       line-height: 1.4;
+      user-select: text;
     }
     /* Блок преимуществ */
     .advantages {
@@ -171,6 +198,7 @@
       margin-left: auto;
       margin-right: auto;
       line-height: 1.5;
+      user-select: text;
     }
     .advantages h3 {
       color: #60a5fa;
@@ -178,6 +206,7 @@
       margin-bottom: 20px;
       font-size: 1.8rem;
       text-align: center;
+      user-select: text;
     }
     .advantages ul {
       list-style: inside disc;
@@ -194,7 +223,9 @@
       color: #64748b;
       background: #111827;
       flex-shrink: 0;
+      user-select: none;
     }
+    /* Мобильные стили */
     @media (max-width: 600px) {
       .hero h2 {
         font-size: 2rem;
@@ -203,11 +234,12 @@
         font-size: 1rem;
       }
       .btn {
-        display: block;
-        width: 100%;
+        max-width: 100%;
         font-size: 1rem;
-        padding: 14px;
+        padding: 14px 18px;
         margin-top: 10px;
+        white-space: normal;
+        word-break: break-word;
       }
       .card img {
         height: 140px;
@@ -225,70 +257,66 @@
     }
   </style>
 
-  <!-- JSON-LD SEO -->
-  <script type="application/ld+json" id="jsonld-main">
+  <!-- JSON-LD SEO для сайта -->
+  <script type="application/ld+json" id="jsonld-site">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "1win Казино — Обзор и Топ-10 Слотов",
     "url": "https://1wcqwj.life",
-    "description": "Обзор казино 1win и топ-10 популярных слотов. Актуальные бонусы, преимущества и лучшие игры 2025 года.",
+    "description": "Обзор казино 1win с топ-10 популярных слотов, актуальными бонусами и преимуществами игры.",
     "publisher": {
       "@type": "Organization",
-      "name": "1win Обзор",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://1wcqwj.life/logo.png"
-      }
+      "name": "1win Обзор"
     }
   }
   </script>
-  <script type="application/ld+json" id="jsonld-slots"></script>
+
+  <!-- Подключение AOS для анимаций -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </head>
 <body>
-<header data-aos="fade-down">
-  <h1 id="header-title">🔥 Обзор Казино 1win — Игра начинается здесь</h1>
-  <button id="lang-switcher" aria-label="Переключить язык">EN</button>
-</header>
+  <header>
+    <h1 id="header-title">🔥 Обзор Казино 1win — Игра начинается здесь</h1>
+    <button id="lang-switcher" aria-label="Switch language">EN</button>
+  </header>
+  <main>
+    <section class="hero" aria-label="Главный баннер казино 1win">
+      <h2 id="hero-title">1win — Лидер онлайн-казино 2025</h2>
+      <p id="hero-description">1win предлагает до 500% бонуса на первый депозит, еженедельный кэшбэк, мгновенные выплаты и более 9000 игр от топовых провайдеров.</p>
+      <a id="hero-button" href="https://1wcqwj.life" target="_blank" rel="nofollow noopener noreferrer" class="btn" role="button">Играть на 1win</a>
+    </section>
 
-<main>
-  <section class="hero" data-aos="zoom-in">
-    <h2 id="hero-title">1win — Лидер онлайн-казино 2025</h2>
-    <p id="hero-description">1win предлагает до 500% бонуса на первый депозит, еженедельный кэшбэк, мгновенные выплаты и более 9000 игр от топовых провайдеров.</p>
-    <a class="btn" href="https://1wcqwj.life" target="_blank" rel="nofollow noopener noreferrer" id="hero-button">Играть на 1win</a>
-  </section>
+    <section class="advantages" aria-label="Преимущества игры в 1win">
+      <h3 id="advantages-title">Преимущества игры в 1win</h3>
+      <ul id="advantages-list">
+        <!-- Сюда динамически вставляются преимущества -->
+      </ul>
+    </section>
 
-  <section class="advantages" data-aos="fade-up">
-    <h3 id="advantages-title">Преимущества игры в 1win</h3>
-    <ul id="advantages-list">
-      <li>Бонус до 500% на первый депозит — отличный старт для новых игроков.</li>
-      <li>Быстрые и безопасные выплаты без задержек.</li>
-      <li>Более 9000 игр от лучших провайдеров: слоты, рулетка, покер и ставки.</li>
-      <li>Еженедельный кэшбэк до 10% для постоянных клиентов.</li>
-      <li>Удобный интерфейс и мобильная версия для игры на ходу.</li>
-      <li>Профессиональная поддержка 24/7 на русском и английском.</li>
-    </ul>
-  </section>
+    <section aria-label="Топ-10 популярных слотов" class="section">
+      <h2 id="slots-title">🌟 Топ-10 популярных слотов</h2>
+      <div id="slots-container" class="card-list" role="list">
+        <!-- Слот карты вставляются сюда динамически -->
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p id="footer-text">© 2025 1win Обзор. Все права защищены.</p>
+  </footer>
 
-  <section class="section" data-aos="fade-up">
-    <h2 id="slots-title">🌟 Топ-10 популярных слотов</h2>
-    <div class="card-list" id="slots-container">
-      <!-- Карточки слотов вставляются скриптом -->
-    </div>
-  </section>
-</main>
+  <!-- JSON-LD для слотов, обновляется динамически -->
+  <script type="application/ld+json" id="jsonld-slots"></script>
 
-<footer data-aos="fade-up">
-  <p id="footer-text">© 2025 1win Обзор. Все права защищены.</p>
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  AOS.init({ once: true });
+  AOS.init({
+    once: true,
+    duration: 700,
+    easing: 'ease-in-out'
+  });
 
   const langSwitcher = document.getElementById('lang-switcher');
 
-  // Данные слотов: id, картинки, ссылки, описания для RU и EN
   const slotsData = [
     {
       id: 'luckyjet',
@@ -296,37 +324,11 @@
       link: 'https://1wcqwj.life/slots/lucky-jet',
       ru: {
         title: 'Lucky Jet',
-        desc: 'Одна из самых популярных игр в стиле crash, где ваша задача — вовремя нажать «Забрать». Чем дольше держите ставку, тем выше множитель, но можно всё потерять. Захватывающий риск и шанс на огромный выигрыш.'
+        desc: 'Захватывающий слот с высокой волатильностью и зрелищными бонусами. Отлично подходит для любителей риска и адреналина.'
       },
       en: {
         title: 'Lucky Jet',
-        desc: 'One of the most popular crash-style games where your task is to cash out in time. The longer you hold your bet, the higher the multiplier, but you can lose everything. Exciting risk and chance for huge winnings.'
-      }
-    },
-    {
-      id: 'sweetbonanza',
-      img: 'https://cdn.1win.life/slot-sweetbonanza.webp',
-      link: 'https://1wcqwj.life/slots/sweet-bonanza',
-      ru: {
-        title: 'Sweet Bonanza',
-        desc: 'Яркий фруктовый слот от Pragmatic Play с каскадными выплатами, возможностью купить бонус-игру и RTP около 96.5%. Отличный выбор для любителей сладких побед.'
-      },
-      en: {
-        title: 'Sweet Bonanza',
-        desc: 'A bright fruit-themed slot by Pragmatic Play featuring cascading wins, the option to buy bonus games, and RTP around 96.5%. A great choice for fans of sweet wins.'
-      }
-    },
-    {
-      id: 'gatesofolympus',
-      img: 'https://cdn.1win.life/slot-gatesofolympus.webp',
-      link: 'https://1wcqwj.life/slots/gates-of-olympus',
-      ru: {
-        title: 'Gates of Olympus',
-        desc: 'Мифологический слот, где Зевс может в любой момент бросить молнию и добавить мощные множители. Один из самых эпичных слотов с высокой волатильностью и зрелищными бонусами.'
-      },
-      en: {
-        title: 'Gates of Olympus',
-        desc: 'A mythological slot where Zeus can strike lightning anytime adding powerful multipliers. One of the most epic slots with high volatility and spectacular bonuses.'
+        desc: 'The most epic slots with high volatility and spectacular bonuses.'
       }
     },
     {
@@ -409,7 +411,7 @@
     }
   ];
 
-  // Тексты для главных элементов в двух языках
+  // Тексты для основных элементов
   const texts = {
     ru: {
       siteTitle: "1win Казино — Обзор и Топ-10 Слотов",
@@ -451,7 +453,7 @@
     }
   };
 
-  // Функция рендера преимуществ (для смены языка)
+  // Рендер преимуществ
   function renderAdvantages(lang) {
     const advTitle = document.getElementById('advantages-title');
     const advList = document.getElementById('advantages-list');
@@ -464,14 +466,15 @@
     });
   }
 
-  // Функция рендера слотов в контейнер
+  // Рендер слотов
   function renderSlots(lang) {
     const container = document.getElementById('slots-container');
-    container.innerHTML = ''; // Очистить перед вставкой
+    container.innerHTML = '';
     slotsData.forEach(slot => {
       const card = document.createElement('div');
       card.className = 'card';
       card.setAttribute('data-aos', 'fade-up');
+      card.setAttribute('role', 'listitem');
       card.innerHTML = `
         <img src="${slot.img}" alt="${slot[lang].title}" loading="lazy" />
         <h3>${slot[lang].title}</h3>
@@ -480,41 +483,10 @@
       `;
       container.appendChild(card);
     });
-    AOS.refresh(); // обновляем анимации после рендера
+    AOS.refresh();
   }
 
-  // Функция генерации JSON-LD для слотов (schema.org)
-  function generateSlotsJSONLD() {
-    const offers = slotsData.map(slot => ({
-      "@type": "Offer",
-      "url": slot.link,
-      "availability": "https://schema.org/InStock"
-    }));
-
-    const games = slotsData.map(slot => ({
-      "@type": "VideoGame",
-      "name": slot.ru.title,
-      "image": slot.img,
-      "url": slot.link,
-      "offers": {
-        "@type": "Offer",
-        "url": slot.link,
-        "availability": "https://schema.org/InStock"
-      },
-      "description": slot.ru.desc,
-      "publisher": {
-        "@type": "Organization",
-        "name": "1win"
-      }
-    }));
-
-    return {
-      "@context": "https://schema.org",
-      "@graph": games
-    };
-  }
-
-  // Функция переключения языка
+  // Переключение языка
   function switchLanguage(lang) {
     document.documentElement.lang = lang;
     document.title = texts[lang].siteTitle;
@@ -522,6 +494,7 @@
     document.getElementById('hero-title').innerText = texts[lang].heroTitle;
     document.getElementById('hero-description').innerText = texts[lang].heroDescription;
     document.getElementById('hero-button').innerText = texts[lang].heroButton;
+    document.getElementById('hero-button').href = "https://1wcqwj.life";
     document.getElementById('slots-title').innerText = texts[lang].slotsTitle;
     document.getElementById('footer-text').innerText = texts[lang].footerText;
     langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
@@ -531,7 +504,6 @@
 
     // Обновляем JSON-LD под язык
     const jsonldScript = document.getElementById('jsonld-slots');
-    // Подставим описание под язык
     const graph = slotsData.map(slot => ({
       "@type": "VideoGame",
       "name": slot[lang].title,
@@ -562,7 +534,7 @@
     switchLanguage(newLang);
   });
 
-  // Автоопределение языка пользователя (если не СНГ - английский)
+  // Автоопределение языка по региону
   window.addEventListener('DOMContentLoaded', () => {
     const userLang = navigator.language || navigator.userLanguage;
     const isCIS = ['ru', 'uk', 'be', 'kk', 'uz', 'ky', 'tg', 'hy'].some(code => userLang.startsWith(code));
