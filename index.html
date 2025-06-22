@@ -10,7 +10,7 @@
   <meta name="color-scheme" content="dark light" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>1win Казино — Обзор и Популярные Слоты</title>
+  <title id="site-title">1win Казино — Обзор и Популярные Слоты</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
@@ -182,16 +182,20 @@
 <body>
 
 <header data-aos="fade-down">
-  <h1>🔥 Обзор Казино 1win — Игра начинается здесь</h1>
+  <h1 id="header-title">🔥 Обзор Казино 1win — Игра начинается здесь</h1>
   <button id="lang-switcher">EN</button>
 </header>
 
 <main>
-  <!-- контент сайта, не меняется -->
+  <section class="hero" data-aos="zoom-in">
+    <h2 id="hero-title">1win — Лидер онлайн-казино 2025</h2>
+    <p id="hero-description">Бонус до 500%, мгновенные выплаты, более 9000 игр и топовые слоты от мировых провайдеров.</p>
+    <a class="btn" href="https://1wcqwj.life" target="_blank" rel="nofollow noopener noreferrer" id="hero-button">Играть на 1win</a>
+  </section>
 </main>
 
 <footer data-aos="fade-up">
-  © 2025 1win Обзор. Все права защищены.
+  <p id="footer-text">© 2025 1win Обзор. Все права защищены.</p>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -199,28 +203,48 @@
   AOS.init({ once: true });
 </script>
 <script>
-  // Переключение языка вручную
   const langSwitcher = document.getElementById('lang-switcher');
-  langSwitcher.addEventListener('click', () => {
-    if (document.documentElement.lang === 'ru') {
-      document.documentElement.lang = 'en';
-      langSwitcher.innerText = 'RU';
-      location.href = location.pathname + '?lang=en';
-    } else {
-      document.documentElement.lang = 'ru';
-      langSwitcher.innerText = 'EN';
-      location.href = location.pathname + '?lang=ru';
+  const elements = {
+    ru: {
+      title: "1win Казино — Обзор и Популярные Слоты",
+      header: "🔥 Обзор Казино 1win — Игра начинается здесь",
+      heroTitle: "1win — Лидер онлайн-казино 2025",
+      heroDesc: "Бонус до 500%, мгновенные выплаты, более 9000 игр и топовые слоты от мировых провайдеров.",
+      heroBtn: "Играть на 1win",
+      footer: "© 2025 1win Обзор. Все права защищены."
+    },
+    en: {
+      title: "1win Casino — Review & Top Slots",
+      header: "🔥 1win Casino Review — Your Winning Starts Here",
+      heroTitle: "1win — The Top Online Casino of 2025",
+      heroDesc: "Up to 500% welcome bonus, instant payouts, 9000+ games from top providers.",
+      heroBtn: "Play on 1win",
+      footer: "© 2025 1win Review. All rights reserved."
     }
+  };
+
+  function switchLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.title = elements[lang].title;
+    document.getElementById('header-title').innerText = elements[lang].header;
+    document.getElementById('hero-title').innerText = elements[lang].heroTitle;
+    document.getElementById('hero-description').innerText = elements[lang].heroDesc;
+    document.getElementById('hero-button').innerText = elements[lang].heroBtn;
+    document.getElementById('footer-text').innerText = elements[lang].footer;
+    langSwitcher.innerText = lang === 'ru' ? 'EN' : 'RU';
+  }
+
+  langSwitcher.addEventListener('click', () => {
+    const currentLang = document.documentElement.lang;
+    const newLang = currentLang === 'ru' ? 'en' : 'ru';
+    switchLanguage(newLang);
   });
 
-  // Автоматическое определение языка по гео
+  // Auto-detect language
   window.addEventListener('DOMContentLoaded', () => {
     const userLang = navigator.language || navigator.userLanguage;
     const isCIS = ['ru', 'uk', 'be', 'kk', 'uz', 'ky', 'tg', 'hy'].some(code => userLang.startsWith(code));
-    if (!isCIS && document.documentElement.lang !== 'en') {
-      document.documentElement.lang = 'en';
-      location.href = location.pathname + '?lang=en';
-    }
+    if (!isCIS) switchLanguage('en');
   });
 </script>
 
