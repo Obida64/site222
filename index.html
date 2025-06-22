@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Завод металлопроката — качественная металлопродукция и профессиональные услуги.">
-  <meta name="keywords" content="металл, завод, металлопрокат, услуги, продукция">
-  <meta name="author" content="Завод Металлопроката">
-  <link rel="icon" href="https://st2.depositphotos.com/2101949/9777/v/450/depositphotos_97776966-stock-illustration-creative-vector-logo-design.jpg" type="image/png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Завод металлопроката — качественная металлопродукция и профессиональные услуги." />
+  <meta name="keywords" content="металл, завод, металлопрокат, услуги, продукция" />
+  <meta name="author" content="Завод Металлопроката" />
   <title>Завод Металлопроката</title>
+  
+  <link rel="icon" href="https://st2.depositphotos.com/2101949/9777/v/450/depositphotos_97776966-stock-illustration-creative-vector-logo-design.jpg" type="image/png" />
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
     body { background: #f6f8fa; color: #222; line-height: 1.6; font-size: 16px; scroll-behavior: smooth; }
@@ -40,7 +42,8 @@
     .product-card { text-align: center; max-width: 350px; }
     .product-card h3 { margin: 10px 0 5px; }
     .product-card p { font-size: 14px; margin-bottom: 10px; }
-    .btn { background: #ff6600; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block; }
+    .btn { background: #ff6600; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; display: inline-block; transition: background-color 0.3s; }
+    .btn:hover { background-color: #e05500; }
     .contact-info p { margin: 8px 0; }
     iframe.map { width: 100%; height: 350px; border: none; margin-top: 30px; border-radius: 12px; }
     footer { background: #203a43; color: white; padding: 30px 20px; text-align: center; font-size: 14px; }
@@ -67,14 +70,16 @@
       .section h2 { font-size: 24px; }
     }
   </style>
+
   <script>
+    // Скрипт меню и скрытия при прокрутке
     let prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
       const nav = document.querySelector("nav");
       const currentScrollPos = window.pageYOffset;
       nav.style.top = prevScrollpos > currentScrollPos ? "0" : "-80px";
       prevScrollpos = currentScrollPos;
-    }
+    };
     function toggleMenu() {
       document.getElementById("mobileMenu").classList.toggle("active");
     }
@@ -99,12 +104,12 @@
       </div>
     </div>
     <div id="mobileMenu" class="mobile-menu">
-      <a href="#about">О компании</a>
-      <a href="#services">Услуги</a>
-      <a href="#catalog">Каталог</a>
-      <a href="#projects">Проекты</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacts">Контакты</a>
+      <a href="#about" onclick="toggleMenu()">О компании</a>
+      <a href="#services" onclick="toggleMenu()">Услуги</a>
+      <a href="#catalog" onclick="toggleMenu()">Каталог</a>
+      <a href="#projects" onclick="toggleMenu()">Проекты</a>
+      <a href="#faq" onclick="toggleMenu()">FAQ</a>
+      <a href="#contacts" onclick="toggleMenu()">Контакты</a>
     </div>
   </nav>
 
@@ -117,7 +122,7 @@
     <section id="about" class="section">
       <h2>О компании</h2>
       <p>Мы — динамично развивающийся завод, предоставляющий металлопродукцию высокого качества для строительных и промышленных нужд. Наша цель — эффективность, надёжность и долгосрочное партнёрство.</p>
-      <img src="https://nflg.ru/d/abz_solo_5000_m_v_chelyabinske_17.jpg" alt="Фотография завода" style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; margin-top:20px;">
+      <img src="https://nflg.ru/d/abz_solo_5000_m_v_chelyabinske_17.jpg" alt="Фотография завода" style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; margin-top:20px;" />
     </section>
 
     <section id="services" class="section">
@@ -128,20 +133,20 @@
         <li>Гибка, штамповка, лазерная резка</li>
         <li>Логистика и доставка по всей России</li>
       </ul>
-      <img src="https://images.unsplash.com/photo-1626302848692-4172b14d0eb4?auto=format&fit=crop&w=1200&q=80" alt="Производственный процесс" style="width:100%; border-radius:12px; margin-top:20px;">
+      <img src="https://ssa.ru/upload/000/u1/d/8/d80b9910.jpg" alt="Производственный процесс" style="width:100%; border-radius:12px; margin-top:20px;" />
     </section>
 
     <section id="catalog" class="section">
       <h2>Каталог продукции</h2>
       <div class="product-list">
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1626222994622-b6a92b1832da?auto=format&fit=crop&w=600&q=80" alt="Арматура">
+          <img src="https://metallicheckiy-portal.ru/imguser/90/20170127_armatyr_1.jpg" alt="Арматура" />
           <h3>Арматура А3</h3>
           <p>Диаметр: 12 мм – от 45 ₽/м</p>
           <a href="#contacts" class="btn">Запросить прайс</a>
         </div>
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1573497019433-3b6b06a8aeb1?auto=format&fit=crop&w=600&q=80" alt="Лист металла">
+          <img src="https://www.metal-b2b.ru/sites/default/files/metal/erndj4wn.jpg" alt="Лист стальной" />
           <h3>Лист стальной</h3>
           <p>Толщина: 3 мм – от 35 ₽/кг</p>
           <a href="#contacts" class="btn">Запросить прайс</a>
@@ -175,12 +180,31 @@
         <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
         <p><strong>Email:</strong> info@metalplant.ru</p>
       </div>
-      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1135.1690172196546!2d46.03684559878084!3d51.54140720615808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114c72e1288d383%3A0x7ed8b191b9eff304!2z0J_QtdC00LXRgNCw0LzQuNC90LjQuiDQk9C10LrRgdC60LLQsCwgMSwg0KHQstC10YDQvdCw0Y8sINCi0L7Qs9GA0LDQvdCz0YDQsNC00YHQutCw0Y8sIDQxMDA0NA!5e0!3m2!1sru!2sru!4v1719055000000" allowfullscreen="" loading="lazy"></iframe>
+      <iframe
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1135.1690172196546!2d46.03684559878084!3d51.54140720615808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114c72e1288d383%3A0x7ed8b191b9eff304!2z0J_QtdC00LXRgNCw0LzQuNC90LjQuiDQk9C10LrRgdC60LLQsCwgMSwg0KHQstC10YDQvdCw0Y8sINCi0L7Qs9GA0LDQvdCz0YDQsNC00YHQutCw0Y8sIDQxMDA0NA!5e0!3m2!1sru!2sru!4v1719055000000"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
     </section>
   </div>
 
   <footer>
     <p>&copy; 2025 Завод Металлопроката. Все права защищены.</p>
   </footer>
+
+  <script>
+    // Скрипт меню и скрытия при прокрутке
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+      const nav = document.querySelector("nav");
+      const currentScrollPos = window.pageYOffset;
+      nav.style.top = prevScrollpos > currentScrollPos ? "0" : "-80px";
+      prevScrollpos = currentScrollPos;
+    };
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
